@@ -1,24 +1,21 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv');
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv',{preload: preload, create: create, update: update});
 
-var mainState = {
 
-	preload: function(){
-		game.load.spritesheet('ene', 'assets/Enemy.png', 128, 128);
-        game.stage.backgroundColor = '#2e628e';
-	},
+function preload(){
+    game.load.spritesheet('ene', 'assets/Enemy.png', 128, 128);
+    game.stage.backgroundColor = '#2e628e';
+}
 
-	create: function(){
-		this.enemy = this.game.add.sprite(300, 200, 'ene');
+function create(){
+    game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        this.enemy.animations.add('fire');
-        this.enemy.animations.play('fire', 10, true);
-	},
+    this.enemy = this.game.add.sprite(300, 200, 'ene');
 
-	update: function(){
+    this.enemy.animations.add('fire');
+    this.enemy.animations.play('fire', 10, true);
+}
 
-	}
+function update(){
 
 }
 
-game.state.add('main', mainState);
-game.state.start('main');
