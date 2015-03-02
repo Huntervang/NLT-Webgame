@@ -12,6 +12,8 @@ function preload(){
 
 var player;
 var enemy;
+var starfield;
+var explosion;
 
 function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
