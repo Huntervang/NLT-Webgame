@@ -27,6 +27,7 @@ function create(){
     player = game.add.sprite(400, 500, 'player');
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
+    player.anchor.setTo(0.5,0.5);
 
     enemy = game.add.sprite(300, 200, 'enemy');
     enemy.animations.add('fire');
@@ -34,5 +35,5 @@ function create(){
 }
 
 function update(){
-
+    player.rotation = game.physics.arcade.angleToPointer(player);
 }
