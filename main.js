@@ -14,6 +14,13 @@ var player;
 var enemy;
 var starfield;
 var explosion;
+var upKey;
+var downKey;
+var leftKey;
+var rightKey;
+var acc = 1000;
+var drag = 400;
+var maxVel = 300;
 
 function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -28,12 +35,43 @@ function create(){
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
     player.anchor.setTo(0.5,0.5);
+    game.physics.enable(player, Phaser.Physics.ARCADE);
 
     enemy = game.add.sprite(300, 200, 'enemy');
     enemy.animations.add('fire');
     enemy.animations.play('fire', 10, true);
+
+    upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    downKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
+    leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
+    rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
 }
 
 function update(){
     player.rotation = game.physics.arcade.angleToPointer(player);
+
+    player.body.maxVelocity.setTo(maxVel, maxVel);
+    player.body.drag.setTo(drag, drag);
+
+    player.body.acceleration.x = 0;
+    player.body.acceleration.y = 0;
+
+    if(leftKey.isDown){
+    	player.body.acceleration.x = -acc;
+
+    }
+
+    if(rightKey.isDown){
+    	player.body.acceleration.x = acc;
+
+    }
+
+    if (downKey.isDown){
+    	player.body.acceleration.y = acc;
+
+    }
+
+    if (upKey.isDown){
+    	player.body.acceleration.y = -acc;
+    }
 }
