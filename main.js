@@ -6,12 +6,14 @@ function preload(){
     game.load.spritesheet('player', 'assets/Player.png', 64, 64);
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
+    game.load.image('cursor', 'assets/cross_0.png');
 
     game.stage.backgroundColor = '#2e628e';
 }
 
 var player;
 var enemy;
+var cursor;
 var starfield;
 var explosion;
 var upKey;
@@ -43,6 +45,9 @@ function create(){
     enemy.animations.add('fire');
     enemy.animations.play('fire', 10, true);
 
+    cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
+    cursor.anchor.setTo(0.5, 0.5);
+
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
     downKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
@@ -51,6 +56,8 @@ function create(){
 
 function update(){
     player.rotation = game.physics.arcade.angleToPointer(player);
+
+    cursor.position.set(game.input.mousePointer.worldX, game.input.mousePointer.worldY);
 
     player.body.maxVelocity.setTo(maxVel, maxVel);
     player.body.drag.setTo(drag, drag);
