@@ -58,17 +58,14 @@ function update(){
 
     if(leftKey.isDown){
     	player.body.acceleration.x = -acc;
-
     }
 
     if(rightKey.isDown){
     	player.body.acceleration.x = acc;
-
     }
 
     if (downKey.isDown){
     	player.body.acceleration.y = acc;
-
     }
 
     if (upKey.isDown){
