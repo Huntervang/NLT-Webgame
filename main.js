@@ -42,7 +42,7 @@ function create(){
     game.physics.enable(player, Phaser.Physics.ARCADE);
     player.body.setSize(64, 64, 64, 64);
     player.body.collideWorldBounds = true;
-    player.body.bounce.setTo(0.5, 0.5);
+    player.body.bounce.setTo(1, 1);
 
 
     bullets = game.add.group(); 
@@ -60,7 +60,7 @@ function create(){
     game.physics.enable(enemy, Phaser.Physics.ARCADE);
     enemy.body.setSize(64, 64, 64, 64);
     enemy.body.collideWorldBounds = true;
-    enemy.body.bounce.setTo(0.5, 0.5);
+    enemy.body.bounce.setTo(0.3, 0.3);
   
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
