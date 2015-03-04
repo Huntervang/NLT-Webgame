@@ -1,32 +1,6 @@
 [Game](http://smauwie.github.io/NLT-spel)
 
 ##Pseudocode:
-
-
-```python
-BEGIN Preload 
-  laad_sprite’s
-  laad_images
-END
-
-BEGIN Create
-	add_physics
-	laad_hero
-	laad_enemy
-	laad_bullets
-	laad_hullhealth
-	laad_shield
-	laad_
-	
-END 
-
-BEGIN Update
-	set_spelerPositie
-	set_spelerSnelheid
-END
-```
-
-
 Input | Output
 --- | ---
 toets “a” | links versnellen
