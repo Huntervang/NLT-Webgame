@@ -22,7 +22,7 @@ var downKey;
 var leftKey;
 var rightKey;
 var acc = 1003;
-var drag = 400;
+var drag = 402;
 var maxVel = 300;
 var bulletTime = 0;
 
