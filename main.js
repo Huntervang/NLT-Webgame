@@ -39,10 +39,11 @@ function create(){
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
     player.anchor.setTo(0.5,0.5);
+    game.physics.enable(player, Phaser.Physics.ARCADE);
     player.body.setSize(400, 500, 64, 64);
     player.body.collideWorldBounds = true;
     player.body.bounce.setTo(0.5, 0.5);
-    game.physics.enable(player, Phaser.Physics.ARCADE);
+
 
     bullets = game.add.group(); 
     bullets.enableBody = true;
