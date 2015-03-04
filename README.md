@@ -26,6 +26,20 @@ BEGIN Update
 END
 ```
 
+
+Input | Output
+--- | ---
+toets “a” | links versnellen
+toets “d” | rechts versnellen
+toets “w” | boven versnellen
+toets “s” | beneden versnellen
+mouseclick 1 | schiet primairy weapon
+mouseclick 2 | schiet secundaire weapon
+collide hoek van inval | collide hoek van uitval
+kogel raak | schade aan ontvanger
+muis bewegen | visier volgt mee
+
+
 ##Planning:
 
 ####Week1:
