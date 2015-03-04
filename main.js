@@ -13,7 +13,7 @@ function preload(){
 
 var player;
 var enemy;
-var bullet; 
+var bullets; 
 var cursor;
 var starfield;
 var explosion;
@@ -38,20 +38,22 @@ function create(){
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
     player.anchor.setTo(0.5,0.5);
-    player.body.setSize(400, 500, 64, 64);
 
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
-    bullet = game.add.group(); 
-
+    bullets = game.add.group(); 
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    bullets.createMultiple(30, 'bullet', 0, false);
+    bullets.setAll('anchor.x', 0.5);
+    bullets.setAll('anchor.y', 0.5);
+    bullets.setAll('outOfBoundsKill', true);
+    bullets.setAll('checkWorldBounds', true);
 
     enemy = game.add.sprite(300, 200, 'enemy');
     enemy.animations.add('fire');
     enemy.animations.play('fire', 10, true);
-    enemy.body.setSize(300, 200, 128, 128)
     game.physics.enable(enemy, Phaser.Physics.ARCADE);
-    
-    enemy.body.immovable = true
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
     cursor.anchor.setTo(0.5, 0.5);
@@ -88,5 +90,18 @@ function update(){
     if (upKey.isDown){
     	player.body.acceleration.y = -acc;
     }
+    
+    if (game.input.activePointer.isDown){
+        fire();
+    }
+    
     game.physics.arcade.collide(player, enemy, null, this);
+}
+
+function fire(){
+    if (game.time.now > nextFire){
+        nextFire = game.time.now + fireRate;
+        var bullet = bullets.getFirstExists(false);
+        bullet.reset(player.x, player.y);
+    }
 }
