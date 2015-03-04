@@ -1,30 +1,18 @@
 [Game](http://smauwie.github.io/NLT-spel)
 
 ##Pseudocode:
+Input | Output
+--- | ---
+toets “a” | links versnellen
+toets “d” | rechts versnellen
+toets “w” | boven versnellen
+toets “s” | beneden versnellen
+mouseclick 1 | schiet primairy weapon
+mouseclick 2 | schiet secundaire weapon
+collide hoek van inval | collide hoek van uitval
+kogel raak | schade aan ontvanger
+muis bewegen | visier volgt mee
 
-
-```python
-BEGIN Preload 
-  laad_sprite’s
-  laad_images
-END
-
-BEGIN Create
-	add_physics
-	laad_hero
-	laad_enemy
-	laad_bullets
-	laad_hullhealth
-	laad_shield
-	laad_
-	
-END 
-
-BEGIN Update
-	set_spelerPositie
-	set_spelerSnelheid
-END
-```
 
 ##Planning:
 
