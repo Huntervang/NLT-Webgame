@@ -7,12 +7,13 @@ function preload(){
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
     game.load.image('cursor', 'assets/cross_0.png');
-
+    game.load.image("bullet", 'assets/bullet_good_0.png');
     game.stage.backgroundColor = '#2e628e';
 }
 
 var player;
 var enemy;
+var bullet; 
 var cursor;
 var starfield;
 var explosion;
