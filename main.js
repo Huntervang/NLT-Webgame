@@ -24,8 +24,7 @@ var rightKey;
 var acc = 1001;
 var drag = 400;
 var maxVel = 300;
-var nextFire = 0;
-var fireRate = 100;
+var bulletTime = 0;
 
 function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -46,7 +45,7 @@ function create(){
     bullets = game.add.group(); 
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
-    bullets.createMultiple(30, 'bullet', 0, false);
+    bullets.createMultiple(30, 'bullet');
     bullets.setAll('anchor.x', 0.5);
     bullets.setAll('anchor.y', 0.5);
     bullets.setAll('outOfBoundsKill', true);
@@ -101,9 +100,12 @@ function update(){
 }
 
 function fire(){
-    if (game.time.now > nextFire){
-        nextFire = game.time.now + fireRate;
+    if (game.time.now > bulletTime){
         var bullet = bullets.getFirstExists(false);
-        bullet.reset(player.x, player.y);
+        
+        if (bullet){
+            bullet.reset(player.x, player.y);
+            bulletTime = game.time.now + 200;
+        }
     }
 }
