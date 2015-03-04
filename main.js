@@ -21,7 +21,7 @@ var upKey;
 var downKey;
 var leftKey;
 var rightKey;
-var acc = 1001;
+var acc = 1002;
 var drag = 400;
 var maxVel = 300;
 var bulletTime = 0;
