@@ -24,6 +24,8 @@ var rightKey;
 var acc = 1000;
 var drag = 400;
 var maxVel = 300;
+var nextFire = 0;
+var fireRate = 100;
 
 function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
