@@ -84,5 +84,5 @@ function update(){
     if (upKey.isDown){
     	player.body.acceleration.y = -acc;
     }
-    game.physics.arcade.collide(player, enemy);
+    game.physics.arcade.collide(player, enemy, null, this);
 }
