@@ -26,9 +26,14 @@ var acc = 1003;
 var drag = 402;
 var maxVel = 300;
 var bulletTime = 0;
+var score = 0;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
+    
+    var t = add.game.text(0, 0, "Score:" + score,{ font: "32px Arial", fill: "#FFD700", align : "center")};
+    t.fixedToCamera = true;
+    t.cameraOffset.setTo(10, 10)
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
