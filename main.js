@@ -40,7 +40,7 @@ function create(){
     player.animations.play('fire_p', 10, true);
     player.anchor.setTo(0.5,0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
-    player.body.setSize(400, 500, 64, 64);
+    player.body.setSize(64, 64, 64, 64);
     player.body.collideWorldBounds = true;
     player.body.bounce.setTo(0.5, 0.5);
 
@@ -58,7 +58,7 @@ function create(){
     enemy.animations.add('fire');
     enemy.animations.play('fire', 10, true);
     game.physics.enable(enemy, Phaser.Physics.ARCADE);
-    enemy.body.setSize(300,200, 128, 128);
+    enemy.body.setSize(64, 64, 64, 64);
     enemy.body.collideWorldBounds = true;
     enemy.body.bounce.setTo(0.5, 0.5);
   
