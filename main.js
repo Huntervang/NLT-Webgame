@@ -103,7 +103,7 @@ function update(){
         fire();
     }
     
-    game.physics.arcade.collide(player, enemy, null, this);
+    game.physics.arcade.collide(player, enemy);
 }
 
 function fire(){
