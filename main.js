@@ -21,7 +21,7 @@ var upKey;
 var downKey;
 var leftKey;
 var rightKey;
-var acc = 1000;
+var acc = 3000;
 var drag = 400;
 var maxVel = 300;
 
@@ -38,7 +38,10 @@ function create(){
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
     player.anchor.setTo(0.5,0.5);
-    game.physics.enable(player, Phaser.Physics.ARCADE);
+    game.physics.enable(player, Phaser.Physics.ARCADE);`
+    
+    bullet = game.add.group(); 
+    
 
     enemy = game.add.sprite(300, 200, 'enemy');
     enemy.animations.add('fire');
