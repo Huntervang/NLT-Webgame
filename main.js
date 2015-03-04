@@ -27,9 +27,11 @@ var maxVel = 300;
 var bulletTime = 0;
 
 function create(){
+    game.world.setBounds(0,0,1920,1200);
+
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    starfield = game.add.tileSprite(0, 0, 800, 600, 'background');
+    starfield = game.add.tileSprite(0, 0, 1920, 1200, 'background');
 
     explosion = game.add.sprite(100, 500, 'explosion');
     explosion.animations.add('explosion');
@@ -43,6 +45,8 @@ function create(){
     player.body.setSize(64, 64, 64, 64);
     player.body.collideWorldBounds = true;
     player.body.bounce.setTo(1, 1);
+
+    game.camera.follow(player);
 
 
     bullets = game.add.group(); 
@@ -102,6 +106,8 @@ function update(){
     if (game.input.activePointer.isDown){
         fire();
     }
+
+    game.world.wrap(player, 0, true);
     
     game.physics.arcade.collide(player, enemy);
 }
