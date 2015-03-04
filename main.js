@@ -38,6 +38,7 @@ function create(){
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
     player.anchor.setTo(0.5,0.5);
+    player.body.setSize(400, 500, 64, 64);
 
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
@@ -47,6 +48,7 @@ function create(){
     enemy = game.add.sprite(300, 200, 'enemy');
     enemy.animations.add('fire');
     enemy.animations.play('fire', 10, true);
+    enemy.body.setSize(300, 200, 128, 128)
     game.physics.enable(enemy, Phaser.Physics.ARCADE);
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
