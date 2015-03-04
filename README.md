@@ -2,6 +2,8 @@
 
 ##Pseudocode:
 
+
+```python
 BEGIN Preload 
   laad_sprite’s
   laad_images
@@ -22,7 +24,7 @@ BEGIN Update
 	set_spelerPositie
 	set_spelerSnelheid
 END
-	
+```
 
 ##Planning:
 
@@ -31,23 +33,23 @@ Planning af!
 Pseudocode af!
 
 ####Week2:
-alpha:
--ruwe versie spel
--makkelijke map 
--placeholder art
--schip kan bewegen, schieten en schade krijgen 
--enemy’s kunnen schaden krijgen, bewegen en schieten
+#####alpha:
+- ruwe versie spel
+- makkelijke map 
+- placeholder art
+- schip kan bewegen, schieten en schade krijgen 
+- enemy’s kunnen schaden krijgen, bewegen en schieten
 
 	
 ####Week3:
-beta:
--achtergrond
--makkelijke artwork
--het idee van de map
--valuta.
--verschillende wapens
--schild
--credits aan het eind
+#####beta:
+- achtergrond
+- makkelijke artwork
+- het idee van de map
+- valuta.
+- verschillende wapens
+- schild
+- credits aan het eind
 
 ####Week4:
 Spel af!
