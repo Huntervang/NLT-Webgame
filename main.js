@@ -57,10 +57,11 @@ function create(){
     enemy = game.add.sprite(300, 200, 'enemy');
     enemy.animations.add('fire');
     enemy.animations.play('fire', 10, true);
+    game.physics.enable(enemy, Phaser.Physics.ARCADE);
     enemy.body.setSize(300,200, 128, 128);
     enemy.body.collideWorldBounds = true;
     enemy.body.bounce.setTo(0.5, 0.5);
-    game.physics.enable(enemy, Phaser.Physics.ARCADE);
+  
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
     cursor.anchor.setTo(0.5, 0.5);
