@@ -30,10 +30,6 @@ var score = 0;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
-    
-    var t = add.game.text(0, 0, "Score:" + score,{ font: "32px Arial", fill: "#FFD700", align : "center")};
-    t.fixedToCamera = true;
-    t.cameraOffset.setTo(10, 10)
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -75,6 +71,10 @@ function create(){
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
     cursor.anchor.setTo(0.5, 0.5);
+    
+    var t = add.game.text(0, 0, "Score:" + score,{ font: "32px Arial", fill: "#FFD700", align : "center")};
+    t.fixedToCamera = true;
+    t.cameraOffset.setTo(10, 10)
 
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
     downKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
