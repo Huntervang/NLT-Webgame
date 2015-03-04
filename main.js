@@ -50,6 +50,8 @@ function create(){
     enemy.animations.play('fire', 10, true);
     enemy.body.setSize(300, 200, 128, 128)
     game.physics.enable(enemy, Phaser.Physics.ARCADE);
+    
+    enemy.body.immovable = true
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
     cursor.anchor.setTo(0.5, 0.5);
