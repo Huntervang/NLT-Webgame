@@ -5,7 +5,6 @@ function preload(){
     game.load.spritesheet('enemy', 'assets/Enemy.png', 128, 128);
     game.load.spritesheet('player', 'assets/Player.png', 64, 64);
     game.load.image('background', 'assets/Background.png');
-    game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
     game.load.image('cursor', 'assets/cross_0.png');
     game.load.image('bullet', 'assets/bullet_good_0.png');
     game.stage.backgroundColor = '#2e628e';
@@ -17,7 +16,6 @@ var bullets;
 var bullet;
 var cursor;
 var starfield;
-var explosion;
 var upKey;
 var downKey;
 var leftKey;
@@ -34,10 +32,6 @@ function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     starfield = game.add.tileSprite(0, 0, 1920, 1200, 'background');
-
-    explosion = game.add.sprite(100, 500, 'explosion');
-    explosion.animations.add('explosion');
-    explosion.animations.play('explosion', 10, true);
 
     player = game.add.sprite(400, 500, 'player');
     player.animations.add('fire_p');
@@ -64,9 +58,10 @@ function create(){
     enemy.animations.add('fire');
     enemy.animations.play('fire', 10, true);
     game.physics.enable(enemy, Phaser.Physics.ARCADE);
-
+    enemy.body.setSize(40, 40, 53, 20);
     enemy.body.collideWorldBounds = true;
     enemy.body.bounce.setTo(0.01, 0.01);
+
   
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
@@ -133,18 +128,18 @@ function fire(){
         
         if (bullet){
             bullet.reset(player.x, player.y);
-            bulletTime = game.time.now + 200;
+            bulletTime = game.time.now + 100;
             bullet.rotation = game.physics.arcade.moveToPointer(bullet, 1000);
         }
     }
 }
 
-function bulletHit(){
+function bulletHit(bullets, bullet){
     bullet.kill();
 }
 
 function render(){
-    //game.debug.body(player);
-    //game.debug.body(enemy);
+    game.debug.body(player);
+    game.debug.body(enemy);
     game.debug.body(bullets);
 }
