@@ -38,7 +38,9 @@ function create(){
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
     player.anchor.setTo(0.5,0.5);
+
     game.physics.enable(player, Phaser.Physics.ARCADE);
+
 
     enemy = game.add.sprite(300, 200, 'enemy');
     enemy.animations.add('fire');
