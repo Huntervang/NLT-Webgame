@@ -1,4 +1,4 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game',{preload: preload, create: create, update: update});
+var game = new Phaser.Game('100%', '100%', Phaser.AUTO, 'game',{preload: preload, create: create, update: update, render: render});
 
 
 function preload(){
@@ -7,13 +7,14 @@ function preload(){
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
     game.load.image('cursor', 'assets/cross_0.png');
-    game.load.image("bullet", 'assets/bullet_good_0.png');
+    game.load.image('bullet', 'assets/bullet_good_0.png');
     game.stage.backgroundColor = '#2e628e';
 }
 
 var player;
 var enemy;
-var bullets; 
+var bullets;
+var bullet;
 var cursor;
 var starfield;
 var explosion;
@@ -40,11 +41,11 @@ function create(){
     player = game.add.sprite(400, 500, 'player');
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
-    player.anchor.setTo(0.5,0.5);
+    player.anchor.setTo(0.5, 0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
-    player.body.setSize(64, 64, 64, 64);
+    player.body.setSize(40, 40, 0, 0);
     player.body.collideWorldBounds = true;
-    player.body.bounce.setTo(1, 1);
+    player.body.bounce.setTo(2, 2);
 
     game.camera.follow(player);
 
@@ -62,9 +63,9 @@ function create(){
     enemy.animations.add('fire');
     enemy.animations.play('fire', 10, true);
     game.physics.enable(enemy, Phaser.Physics.ARCADE);
-    enemy.body.setSize(64, 64, 64, 64);
+
     enemy.body.collideWorldBounds = true;
-    enemy.body.bounce.setTo(0.3, 0.3);
+    enemy.body.bounce.setTo(0.01, 0.01);
   
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
@@ -86,6 +87,12 @@ function update(){
 
     player.body.acceleration.x = 0;
     player.body.acceleration.y = 0;
+
+    enemy.body.maxVelocity.setTo(maxVel, maxVel);
+    enemy.body.drag.setTo(drag, drag);
+
+    enemy.body.acceleration.x = 0;
+    enemy.body.acceleration.y = 0;
 
     if(leftKey.isDown){
     	player.body.acceleration.x = -acc;
@@ -110,15 +117,29 @@ function update(){
     game.world.wrap(player, 0, true);
     
     game.physics.arcade.collide(player, enemy);
+    game.physics.arcade.overlap(bullets, enemy, bulletHit);
+
 }
 
 function fire(){
     if (game.time.now > bulletTime){
-        var bullet = bullets.getFirstExists(false);
+
+        bullet = bullets.getFirstExists(false);
         
         if (bullet){
             bullet.reset(player.x, player.y);
             bulletTime = game.time.now + 200;
+            bullet.rotation = game.physics.arcade.moveToPointer(bullet, 1000);
         }
     }
+}
+
+function bulletHit(){
+    bullet.kill();
+}
+
+function render(){
+    //game.debug.body(player);
+    //game.debug.body(enemy);
+    game.debug.body(bullets);
 }
