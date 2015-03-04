@@ -1,4 +1,4 @@
-###Pseudocode:
+##Pseudocode:
 
 BEGIN Preload 
   laad_sprite’s
@@ -22,13 +22,13 @@ BEGIN Update
 END
 	
 
-###Planning:
+##Planning:
 
-Week1:
+####Week1:
 Planning af!
 Pseudocode af!
 
-Week2:
+####Week2:
 alpha:
 -ruwe versie spel
 -makkelijke map 
@@ -37,7 +37,7 @@ alpha:
 -enemy’s kunnen schaden krijgen, bewegen en schieten
 
 	
-Week3:
+####Week3:
 beta:
 -achtergrond
 -makkelijke artwork
@@ -47,9 +47,9 @@ beta:
 -schild
 -credits aan het eind
 
-Week4:
+####Week4:
 Spel af!
 
-(Week 5:
-extra updates)
+####Week 5:
+extra updates
 
