@@ -25,6 +25,12 @@ var drag = 402;
 var maxVel = 300;
 var bulletTime = 0;
 var score = 0;
+var HPenemy = 2;
+var HPplayer = 3;
+var damagePlayer = 1;
+var damageEnemy = 1;
+var collideDamageEnemy = 1;
+var collideDamagePlayer = 1;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
@@ -116,9 +122,16 @@ function update(){
 
     game.world.wrap(player, 0, true);
     
-    game.physics.arcade.collide(player, enemy);
-    game.physics.arcade.overlap(bullets, enemy, bulletHit);
-
+    if (game.physics.arcade.collide(player, enemy)){
+        HPenemy = HPenemy - collideDamageEnemy;
+        HPplayer = HPplayer -  collideDamagePlayer;
+    };
+    if (game.physics.arcade.overlap(bullets, enemy, bulletHit)){
+       HPenemy = HPenemy - damagePlayer;
+    };
+    if (HPenemy <= 0){
+        enemy.kill();
+    }
 }
 
 function fire(){
