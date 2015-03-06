@@ -8,7 +8,7 @@ function preload(){
     game.load.image('cursor', 'assets/cross_0.png');
     game.load.image('bullet', 'assets/bullet_good_0.png');
     game.stage.backgroundColor = '#2e628e';
-    game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
+    game.load.spritesheet('explosion', 'assets/Explosion.png', 128, 128);
 }
 
 var player;
