@@ -8,6 +8,7 @@ function preload(){
     game.load.image('cursor', 'assets/cross_0.png');
     game.load.image('bullet', 'assets/bullet_good_0.png');
     game.stage.backgroundColor = '#2e628e';
+    game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
 }
 
 var player;
@@ -68,7 +69,14 @@ function create(){
     enemy.body.collideWorldBounds = true;
     enemy.body.bounce.setTo(0.01, 0.01);
 
-  
+    explosions = game.add.group();
+
+    for (var i = 0; i < 10; i++)
+    {
+        var explosionAnimation = explosions.create(0, 0, 'explosion', [0], false);
+        explosionAnimation.anchor.setTo(0.5, 0.5);
+        explosionAnimation.animations.add('explosion');
+    }
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
     cursor.anchor.setTo(0.5, 0.5);
@@ -131,6 +139,10 @@ function update(){
     };
     if (HPenemy <= 0){
         enemy.kill();
+        
+        var explosionAnimation = explosion.getFirstExists(false);
+        explosionAnimation.reset(enemy.x, enemy.y);
+        explosionAnimation.play('explosion', 30, false, true);
     }
 }
 
@@ -150,6 +162,8 @@ function fire(){
 function bulletHit(bullets, bullet){
     bullet.kill();
 }
+
+
 
 function render(){
     //game.debug.body(player);
