@@ -32,6 +32,7 @@ var damagePlayer = 1;
 var damageEnemy = 1;
 var collideDamageEnemy = 1;
 var collideDamagePlayer = 1;
+var explosion;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
