@@ -138,13 +138,7 @@ function update(){
     if (game.physics.arcade.overlap(bullets, enemy, bulletHit)){
        HPenemy = HPenemy - damagePlayer;
     };
-    if (HPenemy <= 0){
-        enemy.kill();
-        
-        var explosionAnimation = explosion.getFirstExists(false);
-        explosionAnimation.reset(enemy.x, enemy.y);
-        explosionAnimation.play('explosion', 30, false, true);
-    }
+
 }
 
 function fire(){
@@ -156,6 +150,16 @@ function fire(){
             bullet.reset(player.x, player.y);
             bulletTime = game.time.now + 100;
             bullet.rotation = game.physics.arcade.moveToPointer(bullet, 1000);
+        }
+
+        if (HPenemy <= 0){
+            enemy.kill();
+
+            var explosionAnimation = explosion.getFirstExists(false);
+            explosionAnimation.reset(enemy.x, enemy.y);
+            explosionAnimation.play('explosion', 30, false, true);
+
+            HPenemy++
         }
     }
 }
