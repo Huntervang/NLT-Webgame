@@ -21,8 +21,8 @@ var upKey;
 var downKey;
 var leftKey;
 var rightKey;
-var acc = 1003;
-var drag = 402;
+var acc = 700;
+var drag = 200;
 var maxVel = 300;
 var bulletTime = 0;
 var score = 0;
@@ -82,7 +82,7 @@ function create(){
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
     cursor.anchor.setTo(0.5, 0.5);
     
-    var t = game.add.text(0, 0, "Score:" + score,{ font: "32px Arial", fill: "#FFD700", align : "center"});
+    var t = game.add.text(0, 0, "Score: " + score,{ font: "24px Arial", fill: "#f1c40f", align : "center"});
     t.fixedToCamera = true;
     t.cameraOffset.setTo(10, 10)
 
@@ -160,9 +160,13 @@ function bulletHit(bullets, bullet){
     if (HPenemy <= 0){
         enemy.kill();
 
-        var explosionAnimation = explosion.getFirstExists(false);
-        explosionAnimation.reset(enemy.x, enemy.y);
-        explosionAnimation.play('explosion', 30, false, true);
+
+        for (var j = 0; j < 25; j += 5){
+            var explosionAnimation = explosion.getFirstExists(false);
+            explosionAnimation.reset(enemy.x + game.rnd.integerInRange(40, 100), enemy.y + game.rnd.integerInRange(40, 100));
+            explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
+        }
+
     }
 }
 
