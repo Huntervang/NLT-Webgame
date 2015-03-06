@@ -70,7 +70,7 @@ function create(){
     enemy.body.collideWorldBounds = true;
     enemy.body.bounce.setTo(0.01, 0.01);
 
-    explosions = game.add.group();
+    explosion = game.add.group();
 
     for (var i = 0; i < 10; i++)
     {
