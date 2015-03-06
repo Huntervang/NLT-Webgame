@@ -151,21 +151,19 @@ function fire(){
             bulletTime = game.time.now + 100;
             bullet.rotation = game.physics.arcade.moveToPointer(bullet, 1000);
         }
-
-        if (HPenemy <= 0){
-            enemy.kill();
-
-            var explosionAnimation = explosion.getFirstExists(false);
-            explosionAnimation.reset(enemy.x, enemy.y);
-            explosionAnimation.play('explosion', 30, false, true);
-
-            HPenemy++
-        }
     }
 }
 
 function bulletHit(bullets, bullet){
     bullet.kill();
+
+    if (HPenemy <= 0){
+        enemy.kill();
+
+        var explosionAnimation = explosion.getFirstExists(false);
+        explosionAnimation.reset(enemy.x, enemy.y);
+        explosionAnimation.play('explosion', 30, false, true);
+    }
 }
 
 
