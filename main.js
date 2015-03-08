@@ -32,6 +32,8 @@ var damageEnemy = 1;
 var collideDamageEnemy = 1;
 var collideDamagePlayer = 1;
 var explosion;
+var score = 0;
+var scoreString = '';
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
@@ -85,6 +87,9 @@ function create(){
     downKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
     rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
+    
+    scoreString = 'Score : ';
+    scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' }); 
 }
 
 function update(){
@@ -133,12 +138,7 @@ function update(){
     if (game.physics.arcade.overlap(bullets, enemy, bulletHit)){
        HPenemy = HPenemy - damagePlayer;
     };
-    
-    var score = 0;
-    
-    var t = game.add.text(0, 0, "Score: " + score,{ font: "24px Arial", fill: "#f1c40f", align : "center"});
-    t.fixedToCamera = true;
-    t.cameraOffset.setTo(10, 10);
+
 
 }
 
@@ -160,7 +160,8 @@ function bulletHit(bullets, bullet){
 
     if (HPenemy <= 0){
         enemy.kill();
-        score += 100
+        score += 20;
+        scoreText.text = scoreString + score;
 
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
