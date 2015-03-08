@@ -81,10 +81,6 @@ function create(){
 
     cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
     cursor.anchor.setTo(0.5, 0.5);
-    
-    var t = game.add.text(0, 0, "Score: " + score,{ font: "24px Arial", fill: "#f1c40f", align : "center"});
-    t.fixedToCamera = true;
-    t.cameraOffset.setTo(10, 10)
 
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
     downKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
@@ -138,6 +134,10 @@ function update(){
     if (game.physics.arcade.overlap(bullets, enemy, bulletHit)){
        HPenemy = HPenemy - damagePlayer;
     };
+    
+    var t = game.add.text(0, 0, "Score: " + score,{ font: "24px Arial", fill: "#f1c40f", align : "center"});
+    t.fixedToCamera = true;
+    t.cameraOffset.setTo(10, 10);
 
 }
 
