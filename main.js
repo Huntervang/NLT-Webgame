@@ -91,6 +91,7 @@ function create(){
     
     scoreString = 'Score : ';
     scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' }); 
+    scoreText.fixedToCamera = true;
 }
 
 function update(){
