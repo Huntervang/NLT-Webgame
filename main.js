@@ -34,7 +34,7 @@ var collideDamagePlayer = 1;
 var explosion;
 var score = 0;
 var scoreString = '';
-var scoreText:
+var scoreText;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
