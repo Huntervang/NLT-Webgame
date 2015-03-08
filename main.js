@@ -25,7 +25,6 @@ var acc = 700;
 var drag = 200;
 var maxVel = 300;
 var bulletTime = 0;
-var score = 0;
 var HPenemy = 10;
 var HPplayer = 11;
 var damagePlayer = 1;
@@ -134,6 +133,8 @@ function update(){
     if (game.physics.arcade.overlap(bullets, enemy, bulletHit)){
        HPenemy = HPenemy - damagePlayer;
     };
+    
+    var score = 0;
     
     var t = game.add.text(0, 0, "Score: " + score,{ font: "24px Arial", fill: "#f1c40f", align : "center"});
     t.fixedToCamera = true;
