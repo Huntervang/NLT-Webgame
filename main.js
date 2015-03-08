@@ -159,7 +159,7 @@ function bulletHit(bullets, bullet){
 
     if (HPenemy <= 0){
         enemy.kill();
-
+        score += 100
 
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
