@@ -13,11 +13,11 @@ body {
     width:800px; 
     background-colr:#34495e;
     margin:auto; 
-    padding-top:15px;
-    padding-bottom:15px;
+    padding-top:25px;
+    padding-bottom:25px;
 }
 #container {
-	height:620px;	
+	height:650px;	
 	width:850px;
 	margin:auto;
 	background-color:#2c3e50;
