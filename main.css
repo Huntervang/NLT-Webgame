@@ -18,7 +18,7 @@ body {
 
 #banner {
 	width:850px;
-	height:240px;
+	height:350px;
 	margin:auto; 
 	background-color:#16a085;
 	margin-top: 20px;
@@ -27,6 +27,6 @@ body {
 #banner img {
 	width:850px;	
 }
-}
+
 
 
