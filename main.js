@@ -97,6 +97,7 @@ function create(){
     
     openScreen = game.add.sprite(0, 50, 'openScreen');
     openScreen.fixedToCamera = true;
+    game.input.onDown.add(removeOpenScreen, this);
 }
 
 function removeOpenScreen (){
