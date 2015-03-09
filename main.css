@@ -13,7 +13,8 @@ body {
     width:800px; 
     background-colr:#34495e;
     margin:auto; 
-    margin-top:15px;
+    padding-top:15px;
+    padding-bottom:15px;
 }
 #container {
 	height:620px;	
