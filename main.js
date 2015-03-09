@@ -9,6 +9,7 @@ function preload(){
     game.load.image('bullet', 'assets/bullet_good_0.png');
     game.stage.backgroundColor = '#2e628e';
     game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
+    game.load.image('openScreen', 'assets/NGC 1337.png', 800, 500);
 }
 
 var player;
@@ -35,6 +36,7 @@ var explosion;
 var score = 0;
 var scoreString = '';
 var scoreText;
+var openScreen;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
@@ -92,6 +94,14 @@ function create(){
     scoreString = 'Score : ';
     scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' }); 
     scoreText.fixedToCamera = true;
+    
+    openScreen = game.add.sprite(0, 50, 'openScreen');
+    openScreen.fixedToCamera = true;
+}
+
+function removeOpenScreen (){
+    game.input.onDown.add(removeOpenScreen, this);
+    openScreen.kill();
 }
 
 function update(){
@@ -142,7 +152,7 @@ function update(){
     };
 
 
-}
+};
 
 function fire(){
     if (game.time.now > bulletTime){
