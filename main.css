@@ -15,6 +15,11 @@ body {
     margin:auto; 
     margin-top:15px;
 }
+#container {
+	height:620;	
+	width:850;
+	margin:auto;
+}
 
 #banner {
 	width:850px;
