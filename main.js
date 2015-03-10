@@ -1,16 +1,17 @@
 var game = new Phaser.Game(800 , 600, Phaser.AUTO, 'game',{preload: preload, create: create, update: update, render: render});
 
-
 function preload(){
-    game.load.spritesheet('enemy', 'assets/Enemy.png', 128, 128);
-    game.load.spritesheet('player', 'assets/Player.png', 64, 64);
-    game.load.image('background', 'http://i.imgur.com/0fExCq1.png');
-    game.load.image('cursor', 'assets/cross_0.png');
-    game.load.image('bullet', 'assets/bullet_good_0.png');
+    game.load.spritesheet('enemy',     'assets/pixel/enemy.png', 128, 128);
+    game.load.spritesheet('player',    'assets/pixel/player.png', 64, 64);
+    game.load.image('cursor',          'assets/pixel/crosshair.png');
+    game.load.image('bullet',          'assets/pixel/bullet.png');
+    game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
+    game.load.image('openScreen',      'assets/pixel/start_screen.png', 800, 500);
+    game.load.image('astroid',         'assets/pixel/meteorite.png', 64, 64);
+
+    game.load.image('background',      'assets/flat/background.png');
+
     game.stage.backgroundColor = '#2e628e';
-    game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
-    game.load.image('openScreen', 'assets/NGC 1337.png', 800, 500);
-    game.load.image('astroid', 'assets/rock_0.png', 64, 64)
 }
 
 var player;
@@ -40,7 +41,7 @@ var scoreText;
 var openScreen;
 var healthString = '';
 var healthText;
-var men = 0;
+var menu = 0;
 var atroids;
 
 function create(){
@@ -60,7 +61,6 @@ function create(){
     player.body.bounce.setTo(2, 2);
 
     game.camera.follow(player);
-
 
     bullets = game.add.group(); 
     bullets.enableBody = true;
@@ -87,7 +87,6 @@ function create(){
         astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
     }
 
-
     explosion = game.add.group();
 
     for (var i = 0; i < 10; i++){
@@ -112,8 +111,7 @@ function create(){
     healthString = 'Hull : ';
     healthText = game.add.text(600, 10, healthString + hpPlayer, { font: '34px Arial', fill: '#fff' });
     healthText.fixedToCamera = true;
-    
-    
+
     openScreen = game.add.sprite(0, 50, 'openScreen');
     openScreen.fixedToCamera = true;
     game.input.onDown.add(removeOpenScreen, this);
@@ -122,13 +120,12 @@ function create(){
 function removeOpenScreen (){
     game.input.onDown.add(removeOpenScreen, this);
     openScreen.kill();
-    window.setTimeout(setMen, 100);
+    window.setTimeout(setMenu, 100);
 }
 
-function setMen(){
-    men = 1;
+function setMenu(){
+    menu = 1;
 }
-
 
 function update(){
     cursor.position.set(game.input.mousePointer.worldX, game.input.mousePointer.worldY);
@@ -145,7 +142,7 @@ function update(){
     enemy.body.acceleration.x = 0;
     enemy.body.acceleration.y = 0;
 
-    if (men == 1){
+    if (menu == 1){
         if(leftKey.isDown){
             player.body.acceleration.x = -acc;
         }
@@ -165,7 +162,6 @@ function update(){
         if (game.input.activePointer.isDown && hpPlayer > 0){
             fire();
         }
-
         player.rotation = game.physics.arcade.angleToPointer(player);
     }
 
@@ -174,7 +170,7 @@ function update(){
     game.physics.arcade.collide(player, enemy, playerHit);
     game.physics.arcade.overlap(bullets, enemy, bulletHit);
     game.physics.arcade.collide(player, astroids, astroidHit);
-};
+}
 
 function fire(){
     if (game.time.now > bulletTime){
@@ -220,7 +216,6 @@ function kill(a,b){
             score += 20;
             scoreText.text = scoreString + score;
         }
-        
 
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
@@ -230,8 +225,6 @@ function kill(a,b){
         
     }
 }
-
-
 
 function render(){
     //game.debug.body(player);
