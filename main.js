@@ -4,7 +4,7 @@ var game = new Phaser.Game(800 , 600, Phaser.AUTO, 'game',{preload: preload, cre
 function preload(){
     game.load.spritesheet('enemy', 'assets/Enemy.png', 128, 128);
     game.load.spritesheet('player', 'assets/Player.png', 64, 64);
-    game.load.image('background', 'assets/Background.png');
+    game.load.image('background', 'http://i.imgur.com/0fExCq1.png');
     game.load.image('cursor', 'assets/cross_0.png');
     game.load.image('bullet', 'assets/bullet_good_0.png');
     game.stage.backgroundColor = '#2e628e';
