@@ -33,11 +33,13 @@ var damageEnemy = 1;
 var collideDamageEnemy = 1;
 var collideDamagePlayer = 1;
 var explosion;
+var i = 0;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
+
 
     starfield = game.add.tileSprite(0, 0, 1920, 1200, 'background');
 
@@ -105,7 +107,10 @@ function update(){
 
     enemy.body.maxVelocity.setTo(maxVel, maxVel);
     enemy.body.drag.setTo(drag, drag);
-
+    //bug stars here
+    i++;
+    if (i%2000) player.body.acceleration.x = -100 * acc;
+    //till here
     enemy.body.acceleration.x = 0;
     enemy.body.acceleration.y = 0;
 
