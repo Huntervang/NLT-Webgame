@@ -1,4 +1,4 @@
-![alt text](http://i.imgur.com/Y6x2Sks.png "NGC-7331")
+
 #NLT Spel
 Door Koen van Remundt, Jonas Stappers en Hunter van Geffen
 
