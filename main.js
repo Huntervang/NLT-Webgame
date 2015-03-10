@@ -151,12 +151,8 @@ function update(){
 
     game.world.wrap(player, 0, true);
     
-    game.physics.arcade.collide(player, enemy, )
+    game.physics.arcade.collide(player, enemy, playerHit);
     game.physics.arcade.overlap(bullets, enemy, bulletHit);
-       
-
-
-
 };
 
 function fire(){
