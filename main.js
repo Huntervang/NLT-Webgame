@@ -26,8 +26,8 @@ var acc = 700;
 var drag = 200;
 var maxVel = 300;
 var bulletTime = 0;
-var HPenemy = 10;
-var HPplayer = 11;
+var hpEnemy = 10;
+var hpPlayer = 11;
 var damagePlayer = 1;
 var damageEnemy = 1;
 var collideDamageEnemy = 1;
@@ -37,6 +37,8 @@ var score = 0;
 var scoreString = '';
 var scoreText;
 var openScreen;
+var healthString = '';
+var healthText;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
@@ -95,6 +97,11 @@ function create(){
     scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' }); 
     scoreText.fixedToCamera = true;
     
+    healthString = 'Hull : ';
+    healthText = game.add.text(750, 10, healthString + hpPlayer, { font: '34px Arial', fill: '#fff' });
+    healthText.fixedToCamera = true;
+    
+    
     openScreen = game.add.sprite(0, 50, 'openScreen');
     openScreen.fixedToCamera = true;
     game.input.onDown.add(removeOpenScreen, this);
@@ -145,8 +152,10 @@ function update(){
     game.world.wrap(player, 0, true);
     
     if (game.physics.arcade.collide(player, enemy)){
-        HPenemy = HPenemy - collideDamageEnemy;
-        HPplayer = HPplayer -  collideDamagePlayer;
+        hpEnemy = hpEnemy - collideDamageEnemy;
+        hpPlayer = hpPlayer -  collideDamagePlayer;
+        healthText.text = healthString + hpPlayer;
+        
     };
     if (game.physics.arcade.overlap(bullets, enemy, bulletHit)){
        HPenemy = HPenemy - damagePlayer;
