@@ -39,6 +39,7 @@ var scoreText;
 var openScreen;
 var healthString = '';
 var healthText;
+var men = 0;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
@@ -90,6 +91,7 @@ function create(){
 
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
     downKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
+
     leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
     rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
     
@@ -110,11 +112,15 @@ function create(){
 function removeOpenScreen (){
     game.input.onDown.add(removeOpenScreen, this);
     openScreen.kill();
+    window.setTimeout(setMen, 100);
 }
 
-function update(){
-    player.rotation = game.physics.arcade.angleToPointer(player);
+function setMen(){
+    men = 1;
+}
 
+
+function update(){
     cursor.position.set(game.input.mousePointer.worldX, game.input.mousePointer.worldY);
 
     player.body.maxVelocity.setTo(maxVel, maxVel);
@@ -129,24 +135,28 @@ function update(){
     enemy.body.acceleration.x = 0;
     enemy.body.acceleration.y = 0;
 
-    if(leftKey.isDown){
-    	player.body.acceleration.x = -acc;
-    }
+    if (men == 1){
+        if(leftKey.isDown){
+            player.body.acceleration.x = -acc;
+        }
 
-    if(rightKey.isDown){
-    	player.body.acceleration.x = acc;
-    }
+        if(rightKey.isDown){
+            player.body.acceleration.x = acc;
+        }
 
-    if (downKey.isDown){
-    	player.body.acceleration.y = acc;
-    }
+        if (downKey.isDown){
+            player.body.acceleration.y = acc;
+        }
 
-    if (upKey.isDown){
-    	player.body.acceleration.y = -acc;
-    }
-    
-    if (game.input.activePointer.isDown){
-        fire();
+        if (upKey.isDown){
+            player.body.acceleration.y = -acc;
+        }
+
+        if (game.input.activePointer.isDown && hpPlayer > 0){
+            fire();
+        }
+
+        player.rotation = game.physics.arcade.angleToPointer(player);
     }
 
     game.world.wrap(player, 0, true);
