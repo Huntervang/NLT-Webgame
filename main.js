@@ -151,15 +151,10 @@ function update(){
 
     game.world.wrap(player, 0, true);
     
-    if (game.physics.arcade.collide(player, enemy)){
-        hpEnemy = hpEnemy - collideDamageEnemy;
-        hpPlayer = hpPlayer -  collideDamagePlayer;
-        healthText.text = healthString + hpPlayer;
-        
-    };
-    if (game.physics.arcade.overlap(bullets, enemy, bulletHit)){
-       hpEnemy = hpEnemy - damagePlayer;
-    };
+    game.physics.arcade.collide(player, enemy, )
+    game.physics.arcade.overlap(bullets, enemy, bulletHit);
+       
+
 
 
 };
@@ -177,9 +172,30 @@ function fire(){
     }
 }
 
+function playerHit(player, enemy){
+    hpEnemy = hpEnemy - collideDamageEnemy;
+    hpPlayer = hpPlayer -  collideDamagePlayer;
+    healthText.text = healthString + hpPlayer;
+    
+    if (hpEnemy <= 0){
+        enemy.kill();
+        score += 20;
+        scoreText.text = scoreString + score;
+
+        for (var j = 0; j < 25; j += 5){
+            var explosionAnimation = explosion.getFirstExists(false);
+            explosionAnimation.reset(enemy.x + game.rnd.integerInRange(40, 100), enemy.y + game.rnd.integerInRange(40, 100));
+            explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
+        }
+
+    }
+}
+
 function bulletHit(bullets, bullet){
     bullet.kill();
-
+    
+    hpEnemy = hpEnemy - damagePlayer;
+    
     if (hpEnemy <= 0){
         enemy.kill();
         score += 20;
