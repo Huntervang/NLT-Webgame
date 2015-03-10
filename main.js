@@ -98,7 +98,7 @@ function create(){
     scoreText.fixedToCamera = true;
     
     healthString = 'Hull : ';
-    healthText = game.add.text(750, 10, healthString + hpPlayer, { font: '34px Arial', fill: '#fff' });
+    healthText = game.add.text(600, 10, healthString + hpPlayer, { font: '34px Arial', fill: '#fff' });
     healthText.fixedToCamera = true;
     
     
