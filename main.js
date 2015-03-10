@@ -27,7 +27,7 @@ var drag = 200;
 var maxVel = 300;
 var bulletTime = 0;
 var hpEnemy = 10;
-var hpPlayer = 11;
+var hpPlayer = 9;
 var damagePlayer = 1;
 var damageEnemy = 1;
 var collideDamageEnemy = 1;
@@ -173,18 +173,8 @@ function playerHit(player, enemy){
     hpPlayer = hpPlayer -  collideDamagePlayer;
     healthText.text = healthString + hpPlayer;
     
-    if (hpEnemy <= 0){
-        enemy.kill();
-        score += 20;
-        scoreText.text = scoreString + score;
-
-        for (var j = 0; j < 25; j += 5){
-            var explosionAnimation = explosion.getFirstExists(false);
-            explosionAnimation.reset(enemy.x + game.rnd.integerInRange(40, 100), enemy.y + game.rnd.integerInRange(40, 100));
-            explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
-        }
-
-    }
+    kill(hpPlayer, player);
+    kill(hpEnemy, enemy);
 }
 
 function bulletHit(bullets, bullet){
@@ -192,8 +182,13 @@ function bulletHit(bullets, bullet){
     
     hpEnemy = hpEnemy - damagePlayer;
     
-    if (hpEnemy <= 0){
-        enemy.kill();
+    kill(hpPlayer, player);
+    kill(hpEnemy, enemy);
+}
+
+function kill(a,b){
+    if (a <= 0){
+        b.kill();
         score += 20;
         scoreText.text = scoreString + score;
 
