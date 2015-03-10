@@ -10,6 +10,7 @@ function preload(){
     game.stage.backgroundColor = '#2e628e';
     game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
     game.load.image('openScreen', 'assets/NGC 1337.png', 800, 500);
+    game.load.image('astroid', 'assets/rock_0.png', 64, 64)
 }
 
 var player;
@@ -40,6 +41,7 @@ var openScreen;
 var healthString = '';
 var healthText;
 var men = 0;
+var atroids;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
@@ -77,10 +79,18 @@ function create(){
     enemy.body.collideWorldBounds = true;
     enemy.body.bounce.setTo(0.01, 0.01);
 
+    astroids = game.add.group();
+    astroids.enableBody = true;
+    astroids.physicsBodyType = Phaser.Physics.ARCADE;
+    
+    for (var i = 0; i < 4; i++){
+        astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1500), 'astroid');
+    }
+    astroids.immovable = true
+
     explosion = game.add.group();
 
-    for (var i = 0; i < 10; i++)
-    {
+    for (var i = 0; i < 10; i++){
         var explosionAnimation = explosion.create(0, 0, 'explosion', [0], false);
         explosionAnimation.anchor.setTo(0.5, 0.5);
         explosionAnimation.animations.add('explosion');
