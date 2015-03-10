@@ -82,11 +82,11 @@ function create(){
     astroids = game.add.group();
     astroids.enableBody = true;
     astroids.physicsBodyType = Phaser.Physics.ARCADE;
+    astroids.setAll('immovable, true');
     
     for (var i = 0; i < 4; i++){
-        var rock = astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
+        astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
     }
-    rock.immovable = true
 
     explosion = game.add.group();
 
