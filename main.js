@@ -7,7 +7,7 @@ function preload(){
     game.load.image('background', 'http://i.imgur.com/0fExCq1.png');
     game.load.image('cursor', 'assets/cross_0.png');
     game.load.image('bullet', 'assets/bullet_good_0.png');
-    game.stage.backgroundColor = '#2c3e50';
+    game.stage.backgroundColor = '#2e628e';
     game.load.spritesheet('explosion', 'assets/Explosion.png', 32, 32);
     game.load.image('openScreen', 'assets/NGC 1337.png', 800, 500);
     game.load.image('astroid', 'assets/rock_0.png', 64, 64)
