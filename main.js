@@ -82,11 +82,12 @@ function create(){
     astroids = game.add.group();
     astroids.enableBody = true;
     astroids.physicsBodyType = Phaser.Physics.ARCADE;
-    astroids.setAll('immovable', true);
     
     for (var i = 0; i < 4; i++){
         astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
     }
+    astroids.body.immovable = true;
+
 
     explosion = game.add.group();
 
