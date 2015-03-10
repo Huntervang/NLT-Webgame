@@ -158,7 +158,7 @@ function update(){
         
     };
     if (game.physics.arcade.overlap(bullets, enemy, bulletHit)){
-       HPenemy = HPenemy - damagePlayer;
+       hpEnemy = hpEnemy - damagePlayer;
     };
 
 
@@ -180,7 +180,7 @@ function fire(){
 function bulletHit(bullets, bullet){
     bullet.kill();
 
-    if (HPenemy <= 0){
+    if (hpEnemy <= 0){
         enemy.kill();
         score += 20;
         scoreText.text = scoreString + score;
