@@ -189,8 +189,11 @@ function bulletHit(bullets, bullet){
 function kill(a,b){
     if (a <= 0){
         b.kill();
-        score += 20;
-        scoreText.text = scoreString + score;
+
+        if (b == enemy){
+            score += 20;
+            scoreText.text = scoreString + score;
+        }
 
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
