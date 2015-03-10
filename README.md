@@ -1,5 +1,6 @@
 [![alt text](http://i.imgur.com/Y6x2Sks.png "NGC-7331")](http://smauwie.github.io/NLT-spel)
 Door Koen van Remundt, Jonas Stappers en Hunter van Geffen
+
 ![alt text](http://i.imgur.com/qOjqXot.png "Alpha")
 #####Concept alpha
 ![alt text](http://i.imgur.com/4dqY0pG.png "Beta")
