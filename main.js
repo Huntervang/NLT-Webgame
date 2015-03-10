@@ -173,6 +173,7 @@ function update(){
     
     game.physics.arcade.collide(player, enemy, playerHit);
     game.physics.arcade.overlap(bullets, enemy, bulletHit);
+    game.physics.arcade.collide(player, astroids, astroidHit);
 };
 
 function fire(){
@@ -186,6 +187,11 @@ function fire(){
             bullet.rotation = game.physics.arcade.moveToPointer(bullet, 1000);
         }
     }
+}
+
+function astroidHit(player, astroids){
+    hpPLayer = hpPlayer - collideDamagePlayer;
+    kill(hpPlayer, player)
 }
 
 function playerHit(player, enemy){
@@ -214,13 +220,14 @@ function kill(a,b){
             score += 20;
             scoreText.text = scoreString + score;
         }
+        
 
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
             explosionAnimation.reset(enemy.x + game.rnd.integerInRange(40, 100), enemy.y + game.rnd.integerInRange(40, 100));
             explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
         }
-
+        
     }
 }
 
