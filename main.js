@@ -76,7 +76,7 @@ function create(){
     enemy.animations.play('fire', 10, true);
     enemy.anchor.setTo(0.5, 0.5);
     game.physics.enable(enemy, Phaser.Physics.ARCADE);
-    enemy.body.setSize(60, 60, 10, 20);
+    enemy.body.setSize(60, 60, 10, -20);
     enemy.body.collideWorldBounds = true;
     enemy.body.bounce.setTo(0.01, 0.01);
 
