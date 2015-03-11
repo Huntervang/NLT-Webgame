@@ -86,6 +86,7 @@ function create(){
     for (var i = 0; i < 4; i++){
         astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
         astroids.children[i].body.immovable = true;
+        astroids.children[i].body.setSize(40, 40, 53, 20);
     }
 
     explosion = game.add.group();
@@ -222,21 +223,13 @@ function kill(a,b){
         if (b == enemy){
             score += 20;
             scoreText.text = scoreString + score;
-        
+        }
         
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
-            explosionAnimation.reset(enemy.x + game.rnd.integerInRange(40, 100), enemy.y + game.rnd.integerInRange(40, 100));
+            explosionAnimation.reset(b.x + game.rnd.integerInRange(40, 100), b.y + game.rnd.integerInRange(40, 100));
             explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
         
-        }
-        }
-        
-        if (b == player){
-            for (var j = 0; j < 25; j += 5){
-            var explosionAnimation = explosion.getFirstExists(false);
-            explosionAnimation.reset(player.x + game.rnd.integerInRange(40, 100), player.y + game.rnd.integerInRange(40, 100));
-            explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
         }
     }
 }
