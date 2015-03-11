@@ -235,7 +235,7 @@ function kill(a,b){
 }
 
 function render(){
-    //game.debug.body(player);
-    //game.debug.body(enemy);
-    //game.debug.body(bullets);
+    game.debug.body(player);
+    game.debug.body(enemy);
+    game.debug.body(bullets);
 }
