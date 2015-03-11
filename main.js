@@ -212,7 +212,7 @@ function bulletHit(bullets, bullet){
     kill(hpEnemy, enemy);
 }
 
-function bulletHit(bullets, bullet){
+function bulletHitAstroid(bullets, bullet){
     bullet.kill();
 }
 
