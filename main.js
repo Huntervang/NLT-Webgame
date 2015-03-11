@@ -172,6 +172,7 @@ function update(){
     game.physics.arcade.collide(player, enemy, playerHit);
     game.physics.arcade.overlap(bullets, enemy, bulletHit);
     game.physics.arcade.collide(player, astroids, astroidHit);
+    game.physics.arcade.overlap(bullets, enemy, bulletHitAstroid);
 }
 
 function fire(){
@@ -189,6 +190,7 @@ function fire(){
 
 function astroidHit(player, astroids){
     hpPLayer = hpPlayer - collideDamagePlayer;
+    healthText.text = healthString + hpPlayer;
     kill(hpPlayer, player)
 }
 
@@ -208,6 +210,10 @@ function bulletHit(bullets, bullet){
     
     kill(hpPlayer, player);
     kill(hpEnemy, enemy);
+}
+
+function bulletHit(bullets, bullet){
+    bullet.kill();
 }
 
 function kill(a,b){
