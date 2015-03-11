@@ -188,7 +188,7 @@ function fire(){
 }
 
 function astroidHit(player, astroids){
-    hpPLayer = hpPlayer - collideDamagePlayer;
+    hpPlayer = hpPlayer - collideDamagePlayer;
     healthText.text = healthString + hpPlayer;
     kill(hpPlayer, player);
     console.log("colliding")
