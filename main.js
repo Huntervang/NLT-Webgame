@@ -87,6 +87,7 @@ function create(){
         astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
         astroids.children[i].body.immovable = true;
         astroids.children[i].body.setSize(40, 40, 0, 0);
+        astroids.children[i].debug.body(astroids);
     }
 
     explosion = game.add.group();
