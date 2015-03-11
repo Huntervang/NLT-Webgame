@@ -32,7 +32,7 @@ var hpEnemy = 10;
 var hpPlayer = 9;
 var damagePlayer = 1;
 var damageEnemy = 1;
-var collideDamageEnemy = 1;
+var collideDamageEnemy = 5;
 var collideDamagePlayer = 1;
 var explosion;
 var score = 0;
