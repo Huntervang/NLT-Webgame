@@ -227,7 +227,7 @@ function kill(a,b){
         
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
-            explosionAnimation.reset(b.x + game.rnd.integerInRange(40, 100), b.y + game.rnd.integerInRange(40, 100));
+            explosionAnimation.reset(b.x + game.rnd.integerInRange(20, 50), b.y + game.rnd.integerInRange(20, 50));
             explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
         
         }
