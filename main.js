@@ -85,7 +85,7 @@ function create(){
     
     for (var i = 0; i < 4; i++){
         astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
-        astroids.children[i].body.moves = false;
+        astroids.children[i].body.immovable = true;
         console.log(astroids.children[i]);
     }
 
@@ -172,7 +172,7 @@ function update(){
     game.physics.arcade.collide(player, enemy, playerHit);
     game.physics.arcade.overlap(bullets, enemy, bulletHit);
     game.physics.arcade.collide(player, astroids, astroidHit);
-    game.physics.arcade.overlap(bullets, astroids, bulletHitAstroid);
+    game.physics.arcade.overlap(astroids, bullets, bulletHitAstroid);
 }
 
 function fire(){
