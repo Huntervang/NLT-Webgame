@@ -109,7 +109,7 @@ function update(){
     enemy.body.drag.setTo(drag, drag);
     //bug stars here
     i++;
-    if (i%2000) player.body.acceleration.x = -100 * acc;
+    if (i%2000 ==0) player.body.acceleration.x = -100 * acc;
     //till here
     enemy.body.acceleration.x = 0;
     enemy.body.acceleration.y = 0;
