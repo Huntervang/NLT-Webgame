@@ -236,10 +236,10 @@ function kill(a,b){
 }
 
 function render(){
-    game.debug.body(player);
-    game.debug.body(enemy);
+    //game.debug.body(player);
+   //game.debug.body(enemy);
     //game.debug.body(bullets);
-    astroids.forEachAlive(renderGroup, this);
+    //astroids.forEachAlive(renderGroup, this);
 }
 
 function renderGroup(member){
