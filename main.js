@@ -8,7 +8,7 @@ function preload(){
     game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
     game.load.image('openScreen',      'assets/pixel/start_screen.png', 800, 500);
     game.load.image('astroid',         'assets/pixel/meteorite.png', 64, 64);
-
+    game.load.image('gameOver',        'assets/pixel/game_ over.jpg', 800, 600);
     game.load.image('background',      'assets/flat/background.png');
 
     game.stage.backgroundColor = '#2e628e';
@@ -43,6 +43,7 @@ var healthString = '';
 var healthText;
 var menu = 0;
 var atroids;
+var gameOver;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
@@ -226,10 +227,17 @@ function kill(a,b){
             scoreText.text = scoreString + score;
         }
         
+        
+        
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
             explosionAnimation.reset(b.x + game.rnd.integerInRange(-20, 20), b.y + game.rnd.integerInRange(-20, 20));
             explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
+        
+        if (b == player){
+            gameOver = game.add.sprite(0, 0, 'gameOver');
+            gameOver.fixedToCamera = true;
+        }
         
         }
     }
