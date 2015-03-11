@@ -58,7 +58,7 @@ function create(){
     game.physics.enable(player, Phaser.Physics.ARCADE);
     player.body.setSize(40, 40, 0, 0);
     player.body.collideWorldBounds = true;
-    player.body.bounce.setTo(2, 2);
+    player.body.bounce.setTo(1, 1);
 
     game.camera.follow(player);
 
@@ -74,6 +74,7 @@ function create(){
     enemy = game.add.sprite(300, 200, 'enemy');
     enemy.animations.add('fire');
     enemy.animations.play('fire', 10, true);
+    enemy.anchor.setTo(0.5, 0.5);
     game.physics.enable(enemy, Phaser.Physics.ARCADE);
     enemy.body.setSize(40, 40, 53, 20);
     enemy.body.collideWorldBounds = true;
@@ -227,7 +228,7 @@ function kill(a,b){
         
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
-            explosionAnimation.reset(b.x + game.rnd.integerInRange(20, 50), b.y + game.rnd.integerInRange(20, 50));
+            explosionAnimation.reset(b.x + game.rnd.integerInRange(-20, 20), b.y + game.rnd.integerInRange(-20, 20));
             explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
         
         }
