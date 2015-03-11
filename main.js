@@ -191,7 +191,6 @@ function astroidHit(player, astroids){
     hpPlayer = hpPlayer - collideDamagePlayer;
     healthText.text = healthString + hpPlayer;
     kill(hpPlayer, player);
-    console.log("colliding")
 }
 
 function playerHit(player, enemy){
