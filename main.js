@@ -86,7 +86,7 @@ function create(){
     for (var i = 0; i < 4; i++){
         astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
         astroids.children[i].body.immovable = true;
-        astroids.children[i].body.setSize(40, 40, 53, 20);
+        astroids.children[i].body.setSize(40, 40, 0, 0);
     }
 
     explosion = game.add.group();
@@ -235,7 +235,7 @@ function kill(a,b){
 }
 
 function render(){
-    game.debug.body(player);
-    game.debug.body(enemy);
-    game.debug.body(bullets);
+    //game.debug.body(player);
+    //game.debug.body(enemy);
+    //game.debug.body(bullets);
 }
