@@ -244,4 +244,4 @@ function render(){
 function renderGroup(member){
     game.debug.body(member);
 }
-}
+
