@@ -7,7 +7,7 @@ function preload(){
     game.load.image('bullet',          'assets/pixel/bullet.png');
     game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
     game.load.image('openScreen',      'assets/pixel/start_screen.png', 800, 500);
-    game.load.image('astroid',         'assets/pixel/meteorite.png', 64, 64);
+    game.load.image('asteroid',        'assets/pixel/meteorite.png', 64, 64);
     game.load.image('gameOver',        'assets/pixel/game_ over.jpg', 800, 600);
     game.load.image('background',      'assets/flat/background.png');
 
@@ -42,8 +42,9 @@ var openScreen;
 var healthString = '';
 var healthText;
 var menu = 0;
-var atroids;
+var asteroids;
 var gameOver;
+var edgeAstroids;
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
@@ -81,15 +82,19 @@ function create(){
     enemy.body.collideWorldBounds = true;
     enemy.body.bounce.setTo(0.01, 0.01);
 
-    astroids = game.add.group();
-    astroids.enableBody = true;
-    astroids.physicsBodyType = Phaser.Physics.ARCADE;
+    asteroids = game.add.group();
+    asteroids.enableBody = true;
+    asteroids.physicsBodyType = Phaser.Physics.ARCADE;
     
     for (var i = 0; i < 4; i++){
-        astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
-        astroids.children[i].body.immovable = true;
-        astroids.children[i].body.setSize(40, 40, 10, 10);
+        asteroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'asteroid');
+        asteroids.children[i].body.immovable = true;
+        asteroids.children[i].body.setSize(40, 40, 10, 10);
     }
+
+    edgeAsteroids = game.add.group();
+    edgeAsteroids.enableBody = true;
+    edgeAsteroids.physicsBodyType = Phaser.Physics.ARCADE;
 
     explosion = game.add.group();
 
