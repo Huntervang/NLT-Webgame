@@ -87,7 +87,6 @@ function create(){
         astroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'astroid');
         astroids.children[i].body.immovable = true;
         astroids.children[i].body.setSize(40, 40, 0, 0);
-        astroids.children[i].debug.body(astroids);
     }
 
     explosion = game.add.group();
@@ -239,5 +238,10 @@ function render(){
     game.debug.body(player);
     //game.debug.body(enemy);
     //game.debug.body(bullets);
-    game.debug.body(astroids);
+    group.forEachAlive(renderGroup, this);
+}
+
+function renderGroup(member){
+    game.debug.body(member);
+}
 }
