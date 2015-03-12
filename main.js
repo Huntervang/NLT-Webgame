@@ -244,7 +244,7 @@ function bulletHit(bullets, bullet){
     hpEnemy = hpEnemy - damagePlayer;
     
     kill(hpPlayer, player);
-    kill(hpEnemy, enemys);
+    kill(hpEnemy, enemys.children[0, 1, 2, 3, 4]);
 }
 
 function bulletHitAsteroid(bullets, bullet){
