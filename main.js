@@ -11,7 +11,7 @@ function preload(){
     game.load.image('gameOver',        'assets/pixel/game_ over.jpg', 800, 600);
     game.load.image('background',      'assets/flat/background.png');
 
-    game.stage.backgroundColor = '#2e628e';
+    game.stage.backgroundColor = '#2c3e50';
 }
 
 var player;
