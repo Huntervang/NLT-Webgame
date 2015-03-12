@@ -267,6 +267,7 @@ function render(){
    //game.debug.body(enemy);
     //game.debug.body(bullets);
     //astroids.forEachAlive(renderGroup, this);
+    //edgeAstroids.forEachAlive(renderGroup, this);
 }
 
 function renderGroup(member){
