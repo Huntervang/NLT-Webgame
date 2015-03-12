@@ -97,13 +97,13 @@ function create(){
     edgeAsteroids.physicsBodyType = Phaser.Physics.ARCADE;
     
      for (var i = 0; i < 50; i++){
-        edgeAsteroids.create(-15 + i * 60, 5 * Math.pow(-1, i), 'asteroid');
+        edgeAsteroids.create(i * 35, 10 * Math.pow(-1, i), 'asteroid');
         edgeAsteroids.children[i].body.immovable = true;
         edgeAsteroids.children[i].body.setSize(40, 40, 10, 10);
     }
 
      for (var i = 0; i < 50; i++){
-        edgeAsteroids.create( 5 * Math.pow(-1, i), -15 + i * 60, 'asteroid');
+        edgeAsteroids.create( 5 * Math.pow(-1, i), i * 35, 'asteroid');
         edgeAsteroids.children[i].body.immovable = true;
         edgeAsteroids.children[i].body.setSize(40, 40, 10, 10);
     }
