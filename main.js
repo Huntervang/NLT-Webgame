@@ -171,8 +171,8 @@ function update(){
     player.body.acceleration.x = 0;
     player.body.acceleration.y = 0;
 
-    enemys.children[].body.maxVelocity.setTo(maxVel, maxVel);
-    enemys.children[].body.drag.setTo(drag, drag);
+    enemys.children[1, 2, 3, 4, 5].body.maxVelocity.setTo(maxVel, maxVel);
+    enemys.children[1, 2, 3, 4, 5].body.drag.setTo(drag, drag);
 
     enemys.children[].body.acceleration.x = 0;
     enemys.children[].body.acceleration.y = 0;
