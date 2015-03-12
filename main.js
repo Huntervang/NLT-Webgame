@@ -1,7 +1,7 @@
 var game = new Phaser.Game(800 , 600, Phaser.AUTO, 'game',{preload: preload, create: create, update: update, render: render});
 
 function preload(){
-    game.load.spritesheet('enemy',     'assets/pixel/enemy.png', 128, 128);
+    game.load.spritesheet('enemys',     'assets/pixel/enemy.png', 128, 128);
     game.load.spritesheet('player',    'assets/pixel/player.png', 64, 64);
     game.load.image('cursor',          'assets/pixel/crosshair.png');
     game.load.image('bullet',          'assets/pixel/bullet.png');
@@ -15,7 +15,7 @@ function preload(){
 }
 
 var player;
-var enemy;
+var enemys;
 var bullets;
 var bullet;
 var cursor;
@@ -73,14 +73,28 @@ function create(){
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
 
-    enemy = game.add.sprite(300, 200, 'enemy');
-    enemy.animations.add('fire');
-    enemy.animations.play('fire', 10, true);
-    enemy.anchor.setTo(0.5, 0.5);
-    game.physics.enable(enemy, Phaser.Physics.ARCADE);
-    enemy.body.setSize(60, 60, 10, -20);
-    enemy.body.collideWorldBounds = true;
-    enemy.body.bounce.setTo(0.01, 0.01);
+    enemys = game.add.group();
+    enemys.physicsBodyType = Phaser.Physics.ARCADE;
+    enemys.enableBody = true;
+
+    for (var i = 0; i<5; i++) {
+        enemys.create(game.rnd.integerInRange(400,1500), game.rnd.intergerInRange(400,1200),'enemys');
+        enemys.children[i].animations.add('fire');
+        enemys.children[i].animations.play('fire',10,true);
+        enemys.children[i].body.setSize(60,60,10,-20);
+        enemys.children[i].body.collideWorldBounds = true;
+        enemys.children[i].body.bounce.setTo(0.01,0.01);
+    }
+
+
+    //enemy = game.add.sprite(300, 200, 'enemy');
+    //enemy.animations.add('fire');
+    //enemy.animations.play('fire', 10, true);
+    //enemy.anchor.setTo(0.5, 0.5);
+    //game.physics.enable(enemy, Phaser.Physics.ARCADE);
+    //enemy.body.setSize(60, 60, 10, -20);
+    //enemy.body.collideWorldBounds = true;
+    //enemy.body.bounce.setTo(0.01, 0.01);
 
     asteroids = game.add.group();
     asteroids.enableBody = true;
@@ -89,7 +103,7 @@ function create(){
     for (var i = 0; i < 4; i++){
         asteroids.create(game.rnd.integerInRange(400, 1500), game.rnd.integerInRange(400, 1200), 'asteroid');
         asteroids.children[i].body.immovable = true;
-        asteroids.children[i].body.setSize(40, 40, 15, 15);
+        asteroids.children[i].body.setSize(40, 40, 10, 10);
     }
 
     edgeAsteroids = game.add.group();
@@ -99,13 +113,13 @@ function create(){
      for (var i = 0; i < 50; i++){
         edgeAsteroids.create(i * 80 + game.rnd.integerInRange(0, 30), game.rnd.integerInRange(0, 20) * Math.pow(-1, game.rnd.integerInRange(0, 1)), 'asteroid');
         edgeAsteroids.children[i].body.immovable = true;
-        edgeAsteroids.children[i].body.setSize(40, 40, 15, 15);
+        edgeAsteroids.children[i].body.setSize(40, 40, 10, 10);
     }
 
      for (var i = 0; i < 50; i++){
         edgeAsteroids.create( game.rnd.integerInRange(0, 25) * Math.pow(-1, game.rnd.integerInRange(0, 1)), i * 80 + game.rnd.integerInRange(0, 30), 'asteroid');
         edgeAsteroids.children[50 + i].body.immovable = true;
-        edgeAsteroids.children[50+ i].body.setSize(40, 40, 15, 15);
+        edgeAsteroids.children[50+ i].body.setSize(40, 40, 10, 10);
     }
 
     explosion = game.add.group();
@@ -267,7 +281,7 @@ function render(){
    //game.debug.body(enemy);
     game.debug.body(bullets);
     asteroids.forEachAlive(renderGroup, this);
-    edgeAsteroids.forEachAlive(renderGroup, this);
+    edgeAstroids.forEachAlive(renderGroup, this);
 }
 
 function renderGroup(member){
