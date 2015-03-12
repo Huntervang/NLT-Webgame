@@ -97,7 +97,7 @@ function create(){
     edgeAsteroids.physicsBodyType = Phaser.Physics.ARCADE;
     
      for (var i = 0; i < 10; i++){
-        edgeAsteroids.create(-35 + i * 45, 5, 'asteroid');
+        edgeAsteroids.create(-35 + i * 60, 5, 'asteroid');
         edgeAsteroids.children[i].body.immovable = true;
         edgeAsteroids.children[i].body.setSize(40, 40, 10, 10);
     }
@@ -186,6 +186,7 @@ function update(){
     game.physics.arcade.overlap(bullets, enemy, bulletHit);
     game.physics.arcade.collide(player, asteroids, asteroidHit);
     game.physics.arcade.overlap(asteroids, bullets, bulletHitAsteroid);
+    game.physics.arcade.collide(player, edgeAsteroids, asteroidHit);
 }
 
 function fire(){
