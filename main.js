@@ -102,6 +102,12 @@ function create(){
         edgeAsteroids.children[i].body.setSize(40, 40, 10, 10);
     }
 
+     for (var i = 0; i < 50; i++){
+        edgeAsteroids.create( 5 + 2 * Math.pow(-1, i), -15 + i * 60, 'asteroid');
+        edgeAsteroids.children[i].body.immovable = true;
+        edgeAsteroids.children[i].body.setSize(40, 40, 10, 10);
+    }
+
     explosion = game.add.group();
 
     for (var i = 0; i < 10; i++){
