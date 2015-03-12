@@ -96,8 +96,8 @@ function create(){
     edgeAsteroids.enableBody = true;
     edgeAsteroids.physicsBodyType = Phaser.Physics.ARCADE;
     
-     for (var i = 0; i < 10; i++){
-        edgeAsteroids.create(-35 + i * 60, 5, 'asteroid');
+     for (var i = 0; i < 50; i++){
+        edgeAsteroids.create(-15 + i * 60, 5 + 2 * Math.pow(-1, i), 'asteroid');
         edgeAsteroids.children[i].body.immovable = true;
         edgeAsteroids.children[i].body.setSize(40, 40, 10, 10);
     }
