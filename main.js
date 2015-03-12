@@ -78,7 +78,7 @@ function create(){
     enemys.enableBody = true;
 
     for (var i = 0; i<5; i++) {
-        enemys.create(game.rnd.integerInRange(400,1500), game.rnd.intergerInRange(400,1200),'enemys');
+        enemys.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'enemys');
         enemys.children[i].animations.add('fire');
         enemys.children[i].animations.play('fire',10,true);
         enemys.children[i].body.setSize(60,60,10,-20);
