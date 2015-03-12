@@ -193,6 +193,7 @@ function update(){
     game.physics.arcade.collide(player, asteroids, asteroidHit);
     game.physics.arcade.overlap(asteroids, bullets, bulletHitAsteroid);
     game.physics.arcade.collide(player, edgeAsteroids, asteroidHit);
+    game.physics.arcade.overlap(edgeAsteroids, bullets, bulletHitAsteroid);
 }
 
 function fire(){
