@@ -202,8 +202,8 @@ function update(){
 
     game.world.wrap(player, 0, true);
     
-    game.physics.arcade.collide(player, enemys, playerHit);
-    game.physics.arcade.overlap(bullets, enemys, bulletHit);
+    game.physics.arcade.collide(player, enemys.children[0, 1, 2, 3, 4], playerHit);
+    game.physics.arcade.overlap(bullets, enemys.children[0, 1, 2, 3, 4], bulletHit);
     game.physics.arcade.collide(player, asteroids, asteroidHit);
     game.physics.arcade.overlap(asteroids, bullets, bulletHitAsteroid);
     game.physics.arcade.collide(player, edgeAsteroids, asteroidHit);
@@ -229,13 +229,13 @@ function asteroidHit(player, astroids){
     kill(hpPlayer, player);
 }
 
-function playerHit(player, enemys){
+function playerHit(player, enemys.children[0, 1, 2, 3, 4]){
     hpEnemy = hpEnemy - collideDamageEnemy;
     hpPlayer = hpPlayer -  collideDamagePlayer;
     healthText.text = healthString + hpPlayer;
     
     kill(hpPlayer, player);
-    kill(hpEnemy, enemys);
+    kill(hpEnemy, enemys.children[0, 1, 2, 3, 4]);
 }
 
 function bulletHit(bullets, bullet){
@@ -244,7 +244,7 @@ function bulletHit(bullets, bullet){
     hpEnemy = hpEnemy - damagePlayer;
     
     kill(hpPlayer, player);
-    kill(hpEnemy, enemys);
+    kill(hpEnemy, enemys.children[0, 1, 2, 3, 4]);
 }
 
 function bulletHitAsteroid(bullets, bullet){
@@ -255,7 +255,7 @@ function kill(a,b){
     if (a <= 0){
         b.kill();
 
-        if (b == enemys){
+        if (b == enemys.children[0, 1, 2, 3, 4]){
             score += 20;
             scoreText.text = scoreString + score;
         }
@@ -279,9 +279,9 @@ function kill(a,b){
 function render(){
     //game.debug.body(player);
    //game.debug.body(enemy);
-    game.debug.body(bullets);
-    asteroids.forEachAlive(renderGroup, this);
-    edgeAsteroids.forEachAlive(renderGroup, this);
+   //game.debug.body(bullets);
+    //asteroids.forEachAlive(renderGroup, this);
+    //edgeAsteroids.forEachAlive(renderGroup, this);
 }
 
 function renderGroup(member){
