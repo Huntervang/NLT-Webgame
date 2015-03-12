@@ -97,9 +97,9 @@ function create(){
     edgeAsteroids.physicsBodyType = Phaser.Physics.ARCADE;
     
      for (var i = 0; i < 10; i++){
-        asteroids.create(-35 + i * 45, 5, 'asteroids');
-        asteroids.children[i].body.immovable = true;
-        asteroids.children[i].body.setSize(40, 40, 10, 10);
+        edgeAsteroids.create(-35 + i * 45, 5, 'asteroid');
+        edgeAsteroids.children[i].body.immovable = true;
+        edgeAsteroids.children[i].body.setSize(40, 40, 10, 10);
     }
 
     explosion = game.add.group();
