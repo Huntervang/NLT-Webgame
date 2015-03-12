@@ -104,8 +104,8 @@ function create(){
 
      for (var i = 0; i < 50; i++){
         edgeAsteroids.create( 5 * Math.pow(-1, i), i * 35, 'asteroid');
-        edgeAsteroids.children[i].body.immovable = true;
-        edgeAsteroids.children[i].body.setSize(40, 40, 10, 10);
+        edgeAsteroids.children[50 + i].body.immovable = true;
+        edgeAsteroids.children[50+ i].body.setSize(40, 40, 10, 10);
     }
 
     explosion = game.add.group();
