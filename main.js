@@ -281,7 +281,7 @@ function render(){
    //game.debug.body(enemy);
     game.debug.body(bullets);
     asteroids.forEachAlive(renderGroup, this);
-    edgeAstroids.forEachAlive(renderGroup, this);
+    edgeAsteroids.forEachAlive(renderGroup, this);
 }
 
 function renderGroup(member){
