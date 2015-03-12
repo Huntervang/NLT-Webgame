@@ -189,7 +189,7 @@ function fire(){
         
         if (bullet){
             bullet.reset(player.x, player.y);
-            bulletTime = game.time.now + 100;
+            bulletTime = game.time.now + 50;
             bullet.rotation = game.physics.arcade.moveToPointer(bullet, 1000);
         }
     }
