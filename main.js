@@ -178,7 +178,7 @@ function update(){
     
     game.physics.arcade.collide(player, enemy, playerHit);
     game.physics.arcade.overlap(bullets, enemy, bulletHit);
-    game.physics.arcade.collide(player, astroids, astroidHit);
+    game.physics.arcade.collide(player, asteroids, astroidHit);
     game.physics.arcade.overlap(astroids, bullets, bulletHitAstroid);
 }
 
