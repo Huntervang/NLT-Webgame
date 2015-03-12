@@ -73,14 +73,24 @@ function create(){
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
 
-    enemy = game.add.sprite(300, 200, 'enemy');
-    enemy.animations.add('fire');
-    enemy.animations.play('fire', 10, true);
-    enemy.anchor.setTo(0.5, 0.5);
-    game.physics.enable(enemy, Phaser.Physics.ARCADE);
-    enemy.body.setSize(60, 60, 10, -20);
-    enemy.body.collideWorldBounds = true;
-    enemy.body.bounce.setTo(0.01, 0.01);
+    for (var i = 0; i<5; i++) {
+        enemys.create(game.rnd.integerInRange(400,1500), game.rnd.intergerInRange(400,1200),'enemys');
+        enemys.children[i].animations.add('fire');
+        enemys.children[i].animations.play('fire',10,true);
+        enemys.children[i].body.setSize(60,60,10,-20);
+        enemys.children[i].body.collideWorldBounds = true;
+        enemys.children[i].body.bounce.setTo(0.01,0.01);
+    }
+
+
+    //enemy = game.add.sprite(300, 200, 'enemy');
+    //enemy.animations.add('fire');
+    //enemy.animations.play('fire', 10, true);
+    //enemy.anchor.setTo(0.5, 0.5);
+    //game.physics.enable(enemy, Phaser.Physics.ARCADE);
+    //enemy.body.setSize(60, 60, 10, -20);
+    //enemy.body.collideWorldBounds = true;
+    //enemy.body.bounce.setTo(0.01, 0.01);
 
     asteroids = game.add.group();
     asteroids.enableBody = true;
@@ -267,7 +277,7 @@ function render(){
    //game.debug.body(enemy);
     game.debug.body(bullets);
     asteroids.forEachAlive(renderGroup, this);
-    edgeAsteroids.forEachAlive(renderGroup, this);
+    edgeAstroids.forEachAlive(renderGroup, this);
 }
 
 function renderGroup(member){
