@@ -171,11 +171,11 @@ function update(){
     player.body.acceleration.x = 0;
     player.body.acceleration.y = 0;
 
-    enemys.body.maxVelocity.setTo(maxVel, maxVel);
-    enemys.body.drag.setTo(drag, drag);
+    enemys.children[].body.maxVelocity.setTo(maxVel, maxVel);
+    enemys.children[].body.drag.setTo(drag, drag);
 
-    enemys.body.acceleration.x = 0;
-    enemys.body.acceleration.y = 0;
+    enemys.children[].body.acceleration.x = 0;
+    enemys.children[].body.acceleration.y = 0;
 
     if (menu == 1){
         if(leftKey.isDown){
