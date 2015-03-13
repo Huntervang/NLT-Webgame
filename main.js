@@ -8,7 +8,7 @@ function preload(){
     game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
     game.load.image('openScreen',      'assets/pixel/start_screen.png', 800, 500);
     game.load.image('asteroid',        'assets/pixel/meteorite.png', 64, 64);
-    game.load.image('gameOver',        'assets/pixel/game_ over.jpg', 800, 600);
+    game.load.image('gameOver',        'assets/pixel/game_over.jpg', 800, 600);
     game.load.image('background',      'assets/flat/background.png');
 
     game.stage.backgroundColor = '#2c3e50';
