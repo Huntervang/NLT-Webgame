@@ -254,9 +254,9 @@ function bulletHitAsteroid(bullets, bullet){
 
 function kill(a,ene){
     if (a <= 0){
-        b.kill();
+        ene.kill();
 
-        if (b == enemys){
+        if (ene == enemys){
             score += 20;
             scoreText.text = scoreString + score;
         }
@@ -267,7 +267,7 @@ function kill(a,ene){
             explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
         }
         
-        if (b == player){
+        if (ene == player){
             gameOver = game.add.sprite(0, 0, 'gameOver');
             gameOver.fixedToCamera = true;
         }
