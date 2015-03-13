@@ -1,13 +1,8 @@
 var game = new Phaser.Game(800 , 600, Phaser.AUTO, 'game',{preload: preload, create: create, update: update, render: render});
 
 function preload(){
-<<<<<<< HEAD
     game.load.spritesheet('enemies',     'assets/pixel/enemy.png', 128, 128);
-    game.load.spritesheet('player',    'assets/pixel/player.png', 64, 64);
-=======
-    game.load.spritesheet('enemys',     'assets/pixel/enemy.png', 128, 128);
     game.load.spritesheet('player',    'assets/flat/Spaceship.png', 64, 64);
->>>>>>> NLT_spel/gh-pages
     game.load.image('cursor',          'assets/pixel/crosshair.png');
     game.load.image('bullet',          'assets/pixel/bullet.png');
     game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
