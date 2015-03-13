@@ -234,8 +234,8 @@ function playerHit(player, enemys){
     hpPlayer = hpPlayer -  collideDamagePlayer;
     healthText.text = healthString + hpPlayer;
     
-    murder(hpPlayer, player);
-    murder(hpEnemy, enemys.children[0, 1, 2, 3, 4]);
+    kill(hpPlayer, player);
+    kill(hpEnemy, enemys.children[0, 1, 2, 3, 4]);
 }
 
 function bulletHit(bullets, bullet){
@@ -243,15 +243,15 @@ function bulletHit(bullets, bullet){
     
     hpEnemy = hpEnemy - damagePlayer;
     
-    murder(hpPlayer, player);
-    murder(hpEnemy, enemys.children[0, 1, 2, 3, 4]);
+    kill(hpPlayer, player);
+    kill(hpEnemy, enemys.children[0, 1, 2, 3, 4]);
 }
 
 function bulletHitAsteroid(bullets, bullet){
     bullet.kill();
 }
 
-function murder(a,b){
+function kill(a,b){
     if (a <= 0){
         b.kill();
 
