@@ -78,12 +78,13 @@ function create(){
     enemys.enableBody = true;
 
     for (var i = 0; i<5; i++) {
-        enemys.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'enemys');
-        enemys.children[i].animations.add('fire');
-        enemys.children[i].animations.play('fire',10,true);
-        enemys.children[i].body.setSize(60,60,10,-20);
-        enemys.children[i].body.collideWorldBounds = true;
-        enemys.children[i].body.bounce.setTo(0.01,0.01);
+        var enemy = enemys.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'enemys');
+        enemy.animations.add('fire');
+        enemy.animations.play('fire',10,true);
+        enemy.body.setSize(60,60,10,-20);
+        enemy.body.collideWorldBounds = true;
+        enemy.body.bounce.setTo(0.01,0.01);
+        enemy.name = 'ene' + i;
     }
 
 
@@ -251,7 +252,7 @@ function bulletHitAsteroid(bullets, bullet){
     bullet.kill();
 }
 
-function kill(a,b){
+function kill(a,ene){
     if (a <= 0){
         b.kill();
 
