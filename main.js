@@ -235,7 +235,7 @@ function playerHit(player, enemys){
     healthText.text = healthString + hpPlayer;
     
     kill(hpPlayer, player);
-    kill(hpEnemy, enemys.children[0, 1, 2, 3, 4]);
+    kill(hpEnemy, enemys);
 }
 
 function bulletHit(bullets, bullet){
@@ -244,7 +244,7 @@ function bulletHit(bullets, bullet){
     hpEnemy = hpEnemy - damagePlayer;
     
     kill(hpPlayer, player);
-    kill(hpEnemy, enemys.children[0, 1, 2, 3, 4]);
+    kill(hpEnemy, enemys);
 }
 
 function bulletHitAsteroid(bullets, bullet){
@@ -260,18 +260,15 @@ function kill(a,b){
             scoreText.text = scoreString + score;
         }
         
-        
-        
         for (var j = 0; j < 25; j += 5){
             var explosionAnimation = explosion.getFirstExists(false);
             explosionAnimation.reset(b.x + game.rnd.integerInRange(-20, 20), b.y + game.rnd.integerInRange(-20, 20));
             explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
+        }
         
         if (b == player){
             gameOver = game.add.sprite(0, 0, 'gameOver');
             gameOver.fixedToCamera = true;
-        }
-        
         }
     }
 }
