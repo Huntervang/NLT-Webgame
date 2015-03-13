@@ -2,7 +2,7 @@ var game = new Phaser.Game(800 , 600, Phaser.AUTO, 'game',{preload: preload, cre
 
 function preload(){
     game.load.spritesheet('enemies',     'assets/pixel/enemy.png', 128, 128);
-    game.load.spritesheet('player',    'assets/flat/spaceshipsprite.png', 256, 256);
+    game.load.spritesheet('player',    'assets/flat/spaceshipsprite.png', 128, 128);
     game.load.image('cursor',          'assets/pixel/crosshair.png');
     game.load.image('bullet',          'assets/pixel/bullet.png');
     game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
