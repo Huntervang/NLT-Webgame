@@ -1,7 +1,7 @@
 var game = new Phaser.Game(800 , 600, Phaser.AUTO, 'game',{preload: preload, create: create, update: update, render: render});
 
 function preload(){
-    game.load.spritesheet('enemies',     'assets/pixel/enemy.png', 128, 128);
+    game.load.spritesheet('enemies',   'assets/pixel/enemy.png', 128, 128);
     game.load.spritesheet('player',    'assets/flat/spaceshipsprite.png', 128, 128);
     game.load.image('cursor',          'assets/pixel/crosshair.png');
     game.load.image('bullet',          'assets/pixel/bullet.png');
@@ -69,13 +69,14 @@ function create(){
     starfield = game.add.tileSprite(0, 0, 1920, 1200, 'background');
 
     player = game.add.sprite(400, 500, 'player');
-   // player.animations.add('fire_p');
-   // player.animations.play('fire_p', 10, true);
+    player.animations.add('fire_p');
+    player.animations.play('fire_p', 10, true);
     player.anchor.setTo(0.5, 0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
     player.body.setSize(40, 40, 0, 0);
     player.body.collideWorldBounds = true;
     player.body.bounce.setTo(1, 1);
+    player.scale.setTo(0.5, 0.5);
 
     game.camera.follow(player);
 
