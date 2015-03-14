@@ -104,7 +104,7 @@ function create(){
 
     planet = game.add.group();
     
-    for (var i = 0 i<3;i++) {
+    for (var i = 0; i<3; i++) {
         planet = planet.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200), 'planet);
     }
 
