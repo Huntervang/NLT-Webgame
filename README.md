@@ -19,7 +19,7 @@ collide hoek van inval | collide hoek van uitval
 kogel raak | schade aan ontvanger
 muis bewegen | visier volgt mee
 
-#Pseudocode bewegen planeet (later ook voor diepte)
+###Pseudocode bewegen planeet (later ook voor diepte)
 if (player moves) then
 	planet moves at 50% of player speed in opposite of the player direction 	
 
