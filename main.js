@@ -103,9 +103,11 @@ function create(){
     bullets.setAll('checkWorldBounds', true);
 
     planet = game.add.group();
+    planet.enebleBody = true;
+    planet.physicsBodyType = Phaser.Physics.ARCADE;
     
     for (var i = 0; i<3; i++) {
-        planet = planet.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200), 'planet);
+        planet = planet.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'planet');
     }
 
     enemies = game.add.group();
