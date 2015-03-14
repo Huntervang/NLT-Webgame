@@ -34,7 +34,7 @@ var bullets;
 var bullet;
 var asteroids;
 var asteroid;
-var edgeAstroids;
+var planets;
 var planet; 
 
 var cursor;
@@ -102,12 +102,12 @@ function create(){
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
 
-    planet = game.add.group();
-    planet.enebleBody = true;
-    planet.physicsBodyType = Phaser.Physics.ARCADE;
+    planets = game.add.group();
+    planets.enebleBody = true;
+    planets.physicsBodyType = Phaser.Physics.ARCADE;
     
     for (var i = 0; i<3; i++) {
-        planet = planet.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'planet');
+        planets = planet.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'planet');
     }
 
     enemies = game.add.group();
