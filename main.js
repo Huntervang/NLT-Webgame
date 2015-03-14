@@ -102,9 +102,9 @@ function create(){
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
 
-    game.add.sprite(600,600 'planet');
-    planet.enebleBody = true;
-    planet.physicsBodyType = Phaser.Physics.ARCADE;
+    //game.add.sprite(600,600 'planet');
+    //planet.enebleBody = true;
+    //planet.physicsBodyType = Phaser.Physics.ARCADE;
     
    
 
