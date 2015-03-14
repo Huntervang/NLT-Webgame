@@ -1,5 +1,14 @@
 var game = new Phaser.Game(800 , 600, Phaser.AUTO, 'game',{preload: preload, create: create, update: update, render: render});
 
+WebFontConfig = {
+    active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
+
+    google: {
+      families: ['Lato']
+    }
+
+};
+
 function preload(){
     game.load.spritesheet('enemies',   'assets/pixel/enemy.png', 128, 128);
     game.load.spritesheet('player',    'assets/flat/spaceshipsprite.png', 128, 128);
@@ -8,10 +17,12 @@ function preload(){
     game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
     game.load.image('openScreen',      'assets/pixel/start_screen.png', 800, 500);
     game.load.image('asteroid',        'assets/pixel/meteorite.png', 64, 64);
-    game.load.image('gameOver',        'assets/pixel/game_over.jpg', 800, 600);
+    game.load.image('gameOver',        'assets/flat/game_over.png', 800, 600);
     game.load.image('background',      'assets/flat/background.png');
 
     game.stage.backgroundColor = '#2c3e50';
+
+    game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 }
 
 var player;
@@ -33,9 +44,11 @@ var upKey;
 var downKey;
 var leftKey;
 var rightKey;
+var xKey;
+var keys;
 
 var acc = 700;
-var drag = 200;
+var drag = 300;
 var maxVel = 300;
 
 var bulletTime = 0;
@@ -58,8 +71,6 @@ var openScreen;
 var gameOver;
 
 var menu = 0;
-
-
 
 function create(){
     game.world.setBounds(0,0,1920,1200);
@@ -121,22 +132,24 @@ function create(){
         explosionAnimation.animations.add('explosion');
     }
 
-    cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
-    cursor.anchor.setTo(0.5, 0.5);
+    //cursor = game.add.sprite(game.input.mousePointer.worldX, game.input.mousePointer.worldY, 'cursor');
+    //cursor.anchor.setTo(0.5, 0.5);
 
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
     downKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
-
     leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
     rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
-    
+    xKey = game.input.keyboard.addKey(Phaser.Keyboard.X);
+    keys = game.input.keyboard.createCursorKeys();
+
     scoreString = 'Score : ';
-    scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' }); 
+    scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Lato', fill: '#fff' });
     scoreText.fixedToCamera = true;
     
     healthString = 'Hull : ';
-    healthText = game.add.text(600, 10, healthString + hpPlayer, { font: '34px Arial', fill: '#fff' });
+    healthText = game.add.text(690, 10, healthString + hpPlayer, { font: '34px Lato', fill: '#fff' });
     healthText.fixedToCamera = true;
+    healthText.addColor('#27ae60',7);
 
     openScreen = game.add.sprite(0, 50, 'openScreen');
     openScreen.fixedToCamera = true;
@@ -150,16 +163,16 @@ function removeOpenScreen (){
 }
 
 function update(){
-    cursor.position.set(game.input.mousePointer.worldX, game.input.mousePointer.worldY);
+    //cursor.position.set(game.input.mousePointer.worldX, game.input.mousePointer.worldY);
 
     player.body.maxVelocity.setTo(maxVel, maxVel);
     player.body.drag.setTo(drag, drag);
 
-    player.body.acceleration.x = 0;
-    player.body.acceleration.y = 0;
+    //player.body.acceleration.x = 0;
+    //player.body.acceleration.y = 0;
 
     if (menu == 1){
-        if(leftKey.isDown){
+       /*if(leftKey.isDown){
             player.body.acceleration.x = -acc;
         }
 
@@ -179,6 +192,28 @@ function update(){
             fire();
         }
         player.rotation = game.physics.arcade.angleToPointer(player);
+        */
+
+        if (xKey.isDown && hpPlayer > 0){
+            fire();
+        }
+
+        if (keys.up.isDown) {
+            game.physics.arcade.accelerationFromRotation(player.rotation, 500, player.body.acceleration);
+        }
+        else {
+            player.body.acceleration.set(0);
+        }
+
+        if (keys.left.isDown) {
+            player.body.angularVelocity = -250;
+        }
+        else if (keys.right.isDown) {
+            player.body.angularVelocity = 250;
+        }
+        else {
+            player.body.angularVelocity = 0;
+        }
     }
 
     game.world.wrap(player, 0, true);
@@ -197,8 +232,10 @@ function fire(){
         
         if (bullet){
             bullet.reset(player.x, player.y);
-            bulletTime = game.time.now + 400;
-            bullet.rotation = game.physics.arcade.moveToPointer(bullet, 1000);
+            bulletTime = game.time.now + 200;
+            bullet.rotation = player.rotation;
+            game.physics.arcade.accelerationFromRotation(player.rotation, 1000, bullet.body.velocity);
+            //game.physics.arcade.moveToPointer(bullet, 1000);
         }
     }
 }
@@ -206,6 +243,8 @@ function fire(){
 function playerAsteroid(player, astroid){
     hpPlayer = hpPlayer - collideDamagePlayer;
     healthText.text = healthString + hpPlayer;
+
+    killPlayer();
 }
 
 function playerEnemy(player, enemy){
@@ -230,7 +269,7 @@ function bulletAsteroid(bullet, asteroid){
 
 function killPlayer(){
 
-    if (hpPlayer < 0){
+    if (hpPlayer <= 0){
         player.kill();
 
         for (var j = 0; j < 25; j += 5){
@@ -241,6 +280,10 @@ function killPlayer(){
 
         gameOver = game.add.sprite(0, 0, 'gameOver');
         gameOver.fixedToCamera = true;
+    }
+
+    if (hpPlayer < 5){
+        healthText.addColor('#e74c3c',7);
     }
 
 }
@@ -261,10 +304,10 @@ function killEnemy(enemy){
 }
 
 function render(){
-    game.debug.body(player);
+    /*game.debug.body(player);
     bullets.forEachAlive(renderGroup, this);
     asteroids.forEachAlive(renderGroup, this);
-    enemies.forEachAlive(renderGroup,this);
+    enemies.forEachAlive(renderGroup,this);*/
 }
 
 function renderGroup(member){
