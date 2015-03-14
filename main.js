@@ -11,7 +11,7 @@ WebFontConfig = {
 
 function preload(){
     game.load.spritesheet('enemies',   'assets/pixel/enemy.png', 128, 128);
-    game.load.spritesheet('player',    'assets/flat/spaceshipsprite.png', 128, 128);
+    game.load.spritesheet('player',    'assets/flat/spaceshipspritesheet.png', 128, 128);
     game.load.image('cursor',          'assets/pixel/crosshair.png');
     game.load.image('bullet',          'assets/pixel/bullet.png');
     game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
