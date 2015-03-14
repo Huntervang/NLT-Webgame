@@ -81,6 +81,15 @@ function create(){
 
     starfield = game.add.tileSprite(0, 0, 1920, 1200, 'background');
 
+    planets = game.add.group();
+    planets.enebleBody = true;
+    planets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    for (var i = 0; i<3; i++) {
+        planet = planets.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'planet');
+        planet.zIndex = 100;
+    }
+
     player = game.add.sprite(400, 500, 'player');
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
@@ -101,14 +110,6 @@ function create(){
     bullets.setAll('anchor.y', 0.5);
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
-
-    planets = game.add.group();
-    planets.enebleBody = true;
-    planets.physicsBodyType = Phaser.Physics.ARCADE;
-    
-    for (var i = 0; i<3; i++) {
-        planet = planets.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'planet');
-    }
 
     enemies = game.add.group();
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
