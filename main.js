@@ -107,7 +107,7 @@ function create(){
     planets.physicsBodyType = Phaser.Physics.ARCADE;
     
     for (var i = 0; i<3; i++) {
-        planets = planet.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'planet');
+        planet = planets.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'planet');
     }
 
     enemies = game.add.group();
