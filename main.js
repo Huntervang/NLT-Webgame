@@ -103,7 +103,6 @@ function create(){
     bullets.setAll('checkWorldBounds', true);
 
     planet = game.add.sprite(600,600 'planet');
-    planet = game.add.group();
     planet.enebleBody = true;
     planet.physicsBodyType = Phaser.Physics.ARCADE;
     
