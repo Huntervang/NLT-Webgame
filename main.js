@@ -19,6 +19,7 @@ function preload(){
     game.load.image('asteroid',        'assets/pixel/meteorite.png', 64, 64);
     game.load.image('gameOver',        'assets/flat/game_over.png', 800, 600);
     game.load.image('background',      'assets/flat/background.png');
+    game.load.image('planet',          'assets/flat/Planet.png',64,64);
 
     game.stage.backgroundColor = '#2c3e50';
 
@@ -34,6 +35,7 @@ var bullet;
 var asteroids;
 var asteroid;
 var edgeAstroids;
+var planet; 
 
 var cursor;
 var starfield;
@@ -99,6 +101,12 @@ function create(){
     bullets.setAll('anchor.y', 0.5);
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
+
+    planet = game.add.group();
+    
+    for (var i = 0 i<3;i++) {
+        planet = planet.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200), 'planet);
+    }
 
     enemies = game.add.group();
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -313,4 +321,3 @@ function render(){
 function renderGroup(member){
     game.debug.body(member);
 }
-
