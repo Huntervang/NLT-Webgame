@@ -93,7 +93,7 @@ function create(){
     player = game.add.sprite(400, 500, 'player');
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
-    player.anchor.setTo(0.5, 1);
+    player.anchor.setTo(0.5, 0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
     player.body.setSize(40, 40, 0, 0);
     player.body.collideWorldBounds = true;
