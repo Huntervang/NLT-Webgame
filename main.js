@@ -20,6 +20,7 @@ function preload(){
     game.load.image('gameOver',        'assets/flat/game_over.png', 800, 600);
     game.load.image('background',      'assets/flat/background.png');
     game.load.image('planet',          'assets/flat/Planet200.png', 128, 128);
+    game.load.image('moon',            'assets/flat/Moon64.png');
 
     game.stage.backgroundColor = '#2c3e50';
 
