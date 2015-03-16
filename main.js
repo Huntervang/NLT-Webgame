@@ -21,9 +21,9 @@ function preload(){
     game.load.image('background',      'assets/flat/background.png');
     game.load.image('planet',          'assets/flat/Planet200.png', 128, 128);
     game.load.image('moon',            'assets/flat/Moon64.png');
-    game.load.image('b_hp',        'assets/pixel/b_health.png', 40, 40);
-    game.load.image('m_hp',        'assets/pixel/m_health.png', 40, 40);
-    game.load.image('e_hp',        'assets/pixel/e_health.png', 40, 40);
+    game.load.image('b_hp',            'assets/pixel/b_health.png', 40, 40);
+    game.load.image('m_hp',            'assets/pixel/m_health.png', 40, 40);
+    game.load.image('e_hp',            'assets/pixel/e_health.png', 40, 40);
 
     game.stage.backgroundColor = '#2c3e50';
 
