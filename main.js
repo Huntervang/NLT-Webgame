@@ -59,11 +59,11 @@ var maxVel = 300;
 
 var bulletTime = 0;
 
-var hpEnemy = 10;
+var hpEnemy = 5;
 var hpPlayer = 9;
-var damagePlayer = 2;
+var damagePlayer = 1;
 var damageEnemy = 1;
-var collideDamageEnemy = 5;
+var collideDamageEnemy = 2.5;
 var collideDamagePlayer = 1;
 
 var score = 0;
@@ -130,6 +130,7 @@ function create(){
         enemy.body.collideWorldBounds = true;
         enemy.body.bounce.setTo(0.01,0.01);
         enemy.anchor.setTo(0.5, 0.5);
+        enemy.health = hpEnemy;
     }
 
     asteroids = game.add.group();
@@ -291,15 +292,17 @@ function playerAsteroid(player, astroid){
 }
 
 function playerEnemy(player, enemy){
+    enemy.damage(collideDamageEnemy);
+
     killEnemy(enemy);
     killPlayer();
 }
 
 function bulletEnemy(bullet, enemy){
-    hpEnemy = hpEnemy - damagePlayer;
-    
-    window.setTimeout(function(){bullet.kill();}, 10);
+    enemy.damage(damagePlayer);
     killEnemy(enemy);
+
+    window.setTimeout(function(){bullet.kill();}, 10);
 }
 
 function bulletAsteroid(bullet, asteroid){
@@ -311,14 +314,10 @@ function killPlayer(){
     if ((maxHp - 1) <= 0){
         player.kill();
 
-        for (var j = 0; j < 25; j += 5){
-            var explosionAnimation = explosion.getFirstExists(false);
-            explosionAnimation.reset(player.x + game.rnd.integerInRange(-20, 20), player.y + game.rnd.integerInRange(-20, 20));
-            explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
-        }
-
         gameOver = game.add.sprite(0, 0, 'gameOver');
         gameOver.fixedToCamera = true;
+
+        explode(player);
     }
 
     maxHp--;
@@ -326,25 +325,27 @@ function killPlayer(){
 }
 
 function killEnemy(enemy){
-    if (hpEnemy < 0){
-        enemy.kill();
-
-        for (var j = 0; j < 25; j += 5){
-            var explosionAnimation = explosion.getFirstExists(false);
-            explosionAnimation.reset(enemy.x + game.rnd.integerInRange(-20, 20), enemy.y + game.rnd.integerInRange(-20, 20));
-            explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
-        }
+    if (enemy.health <= 0) {
+        explode(enemy);
 
         score += 20;
         scoreText.text = scoreString + score;
     }
 }
 
+function explode(sprite){
+    for (var j = 0; j < 25; j += 5){
+            var explosionAnimation = explosion.getFirstExists(false);
+            explosionAnimation.reset(sprite.x + game.rnd.integerInRange(-20, 20), sprite.y + game.rnd.integerInRange(-20, 20));
+            explosionAnimation.play('explosion', 40 - game.rnd.integerInRange(0, 30), false, true);
+    }
+}
+
 function render(){
-    game.debug.body(player);
+    /*game.debug.body(player);
     bullets.forEachAlive(renderGroup, this);
     asteroids.forEachAlive(renderGroup, this);
-    enemies.forEachAlive(renderGroup,this);
+    enemies.forEachAlive(renderGroup,this);*/
 }
 
 function renderGroup(member){
