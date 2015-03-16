@@ -21,6 +21,9 @@ function preload(){
     game.load.image('background',      'assets/flat/background.png');
     game.load.image('planet',          'assets/flat/Planet200.png', 128, 128);
     game.load.image('moon',            'assets/flat/Moon64.png');
+    game.load.image('b_hp',        'assets/pixel/b_health.png', 40, 40);
+    game.load.image('m_hp',        'assets/pixel/m_health.png', 40, 40);
+    game.load.image('e_hp',        'assets/pixel/e_health.png', 40, 40);
 
     game.stage.backgroundColor = '#2c3e50';
 
@@ -67,8 +70,11 @@ var score = 0;
 
 var scoreString = '';
 var scoreText;
-var healthString = '';
-var healthText;
+//var healthString = '';
+//var healthText;
+
+var hp;
+var maxHp = 5;
 
 var openScreen;
 var gameOver;
@@ -96,7 +102,7 @@ function create(){
     player.animations.play('fire_p', 10, true);
     player.anchor.setTo(0.5, 0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
-    player.body.setSize(40, 40, 0, 0);
+    player.body.setSize(64, 64, 0, 0);
     player.body.collideWorldBounds = true;
     player.body.bounce.setTo(1, 1);
     player.scale.setTo(0.5, 0.5);
@@ -158,10 +164,14 @@ function create(){
     scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Lato', fill: '#fff' });
     scoreText.fixedToCamera = true;
     
-    healthString = 'Hull : ';
+    /*healthString = 'Hull : ';
     healthText = game.add.text(690, 10, healthString + hpPlayer, { font: '34px Lato', fill: '#fff' });
     healthText.fixedToCamera = true;
-    healthText.addColor('#27ae60',7);
+    healthText.addColor('#27ae60',7);*/
+
+    hp = game.add.group();
+
+    setHp();
 
     openScreen = game.add.sprite(0, 50, 'openScreen');
     openScreen.fixedToCamera = true;
@@ -237,6 +247,30 @@ function update(){
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
 }
 
+function setHp(){
+    if (typeof b_hp !== 'undefined'){
+        b_hp.kill();
+        e_hp.kill();
+        hp.removeAll();
+    }
+
+    for (var i = 0; i < maxHp; i++) {
+        if (i == (maxHp - 1) && maxHp !== 1){
+            b_hp = game.add.sprite(750 - (45 *  i), 30, 'b_hp');
+            b_hp.anchor.setTo(0.5, 0.5);
+            b_hp.fixedToCamera = true;
+        } else if (i == 0 && maxHp !== 1){
+            e_hp = game.add.sprite(750 - (45 *  i), 30, 'e_hp');
+            e_hp.anchor.setTo(0.5, 0.5);
+            e_hp.fixedToCamera = true;
+        } else{
+            m_hp = hp.create(750 - (45 *  i), 30, 'm_hp');
+            m_hp.anchor.setTo(0.5, 0.5);
+            m_hp.fixedToCamera = true;
+        }
+    }
+}
+
 function fire(){
     if (game.time.now > bulletTime){
 
@@ -253,17 +287,10 @@ function fire(){
 }
 
 function playerAsteroid(player, astroid){
-    hpPlayer = hpPlayer - collideDamagePlayer;
-    healthText.text = healthString + hpPlayer;
-
     killPlayer();
 }
 
 function playerEnemy(player, enemy){
-    hpEnemy = hpEnemy - collideDamageEnemy;
-    hpPlayer = hpPlayer -  collideDamagePlayer;
-    healthText.text = healthString + hpPlayer;
-
     killEnemy(enemy);
     killPlayer();
 }
@@ -281,7 +308,7 @@ function bulletAsteroid(bullet, asteroid){
 
 function killPlayer(){
 
-    if (hpPlayer <= 0){
+    if ((maxHp - 1) <= 0){
         player.kill();
 
         for (var j = 0; j < 25; j += 5){
@@ -294,10 +321,8 @@ function killPlayer(){
         gameOver.fixedToCamera = true;
     }
 
-    if (hpPlayer < 5){
-        healthText.addColor('#e74c3c',7);
-    }
-
+    maxHp--;
+    setHp();
 }
 
 function killEnemy(enemy){
@@ -316,10 +341,10 @@ function killEnemy(enemy){
 }
 
 function render(){
-    /*game.debug.body(player);
+    game.debug.body(player);
     bullets.forEachAlive(renderGroup, this);
     asteroids.forEachAlive(renderGroup, this);
-    enemies.forEachAlive(renderGroup,this);*/
+    enemies.forEachAlive(renderGroup,this);
 }
 
 function renderGroup(member){
