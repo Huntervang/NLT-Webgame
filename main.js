@@ -191,7 +191,8 @@ function update(){
     player.body.maxVelocity.setTo(maxVel, maxVel);
     player.body.drag.setTo(drag, drag);
     
-     enemy.body.drag.setTo(drag, drag);
+    enemy.body.maxVelocity.setTo(maxVel, maxVel);
+    enemy.body.drag.setTo(drag, drag);
 
     //player.body.acceleration.x = 0;
     //player.body.acceleration.y = 0;
