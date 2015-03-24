@@ -246,7 +246,7 @@ function update(){
     
     game.physics.arcade.collide(player, enemies, playerEnemy);
     game.physics.arcade.collide(player, asteroids, playerAsteroid);
-    game.physics.arcade.collide(enemy, asteroids, enemyAsteroid);
+    game.physics.arcade.collide(enemies, asteroids, enemyAsteroid);
 
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
