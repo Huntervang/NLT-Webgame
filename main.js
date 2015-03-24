@@ -297,7 +297,7 @@ function playerAsteroid(player, asteroid){
 
 function enemyAsteroid(enemy, asteroid){
     enemy.damage(damagePlayer);
-    killEnemy();
+    killEnemy(enemy);
 }
 
 function playerEnemy(player, enemy){
