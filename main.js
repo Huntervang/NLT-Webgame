@@ -291,11 +291,12 @@ function fire(){
     }
 }
 
-function playerAsteroid(player, astroid){
+function playerAsteroid(player, asteroid){
     killPlayer();
 }
 
-function enemyAsteroid(player, astroid){
+function enemyAsteroid(enemy, asteroid){
+    enemy.damage(damagePlayer);
     killEnemy();
 }
 
