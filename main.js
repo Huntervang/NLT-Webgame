@@ -86,7 +86,7 @@ function create(){
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    starfield = game.add.tileSprite(0, 0, 1920, 1200, 'background');
+    starfield = game.add.tileSprite(0, 0, 4000 , 2000, 'background');
 
     planets = game.add.group();
     planets.enebleBody = true;
