@@ -93,8 +93,22 @@ function create(){
     planets.physicsBodyType = Phaser.Physics.ARCADE;
 
     for (var i = 0; i<3; i++) {
-        planet = planets.create(game.rnd.integerInRange(400,1500), game.rnd.integerInRange(400,1200),'planet');
-        planet.zIndex = 100;
+        if (i = 1){
+            planet = planets.create(game.rnd.integerInRange(200,1800), game.rnd.integerInRange(200,800),'planet');
+            planet.zIndex = 100;
+        }
+        if (i = 2){
+            planet = planets.create(game.rnd.integerInRange(2200, 3800), game.rnd.integerInRange(200,800),'planet');
+            planet.zIndex = 100;
+        }
+        if (i = 3){
+            planet = planets.create(game.rnd.integerInRange(200,1800), game.rnd.integerInRange(1200,1800),'planet');
+            planet.zIndex = 100;
+        }
+        if (i = 4){
+            planet = planets.create(game.rnd.integerInRange(2200,3800), game.rnd.integerInRange(1200, 1800),'planet');
+            planet.zIndex = 100;
+        }
     }
 
     player = game.add.sprite(400, 500, 'player');
@@ -297,7 +311,7 @@ function playerAsteroid(player, asteroid){
 
 function enemyAsteroid(enemy, asteroid){
     enemy.damage(damagePlayer);
-    killEnemy(enemy);
+    killEnemy();
 }
 
 function playerEnemy(player, enemy){
