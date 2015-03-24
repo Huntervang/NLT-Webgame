@@ -305,8 +305,8 @@ function fire(){
     }
 }
 
-function playerAsteroid(player, asteroid){
-    killPlayer();
+function playerAsteroid(player, asteroid, a){
+    killPlayer(collideDamagePlayer);
 }
 
 function enemyAsteroid(enemy, asteroid){
@@ -318,7 +318,7 @@ function playerEnemy(player, enemy){
     enemy.damage(collideDamageEnemy);
 
     killEnemy(enemy);
-    killPlayer();
+    killPlayer(collideDamagePlayer);
 }
 
 function bulletEnemy(bullet, enemy){
@@ -332,9 +332,12 @@ function bulletAsteroid(bullet, asteroid){
     window.setTimeout(function(){bullet.kill();}, 10);
 }
 
-function killPlayer(){
-
-    if ((maxHp - 1) <= 0){
+function killPlayer(a){
+    
+    maxHp -= a;
+    setHp();
+    
+    if (maxHp <= 0){
         player.kill();
 
         gameOver = game.add.sprite(0, 0, 'gameOver');
@@ -343,8 +346,7 @@ function killPlayer(){
         explode(player);
     }
 
-    maxHp--;
-    setHp();
+    
 }
 
 function killEnemy(enemy){
