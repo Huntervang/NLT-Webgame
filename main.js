@@ -82,7 +82,7 @@ var gameOver;
 var menu = 0;
 
 function create(){
-    game.world.setBounds(0,0,1920,1200);
+    game.world.setBounds(0,0,4000,2000);
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
