@@ -270,7 +270,7 @@ function update(){
 }
 
 function aI(){
-    if (game.physics.arcade.distanceBetween(player, enemy) < 200){
+    if (game.physics.arcade.distanceBetween(player, enemy) < 400){
         game.physics.arcade.moveToObject(enemy, player)
     }
 }
