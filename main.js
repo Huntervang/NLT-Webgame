@@ -255,12 +255,12 @@ function update(){
         else {
             player.body.angularVelocity = 0;
         }
-        
-        if (game.physics.arcade.distanceBetween(player, enemies) < 200){
-            game.physics.arcade.moveToObject(enemy, player)
-        }
     }
-
+    
+    if (game.physics.arcade.distanceBetween(player, enemies) < 200){
+        game.physics.arcade.moveToObject(enemy, player)
+    }
+    
     game.world.wrap(player, 0, true);
     
     game.physics.arcade.collide(player, enemies, playerEnemy);
