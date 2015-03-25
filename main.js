@@ -257,7 +257,7 @@ function update(){
         }
     }
     
-    if (game.physics.arcade.distanceBetween(player, enemy.getFirstExists) < 200){
+    if (game.physics.arcade.distanceBetween(player, enemy) < 200){
         game.physics.arcade.moveToObject(enemy, player)
     }
     
