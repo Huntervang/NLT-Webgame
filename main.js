@@ -138,7 +138,7 @@ function create(){
     enemies.enableBody = true;
 
     for (var i = 0; i<10; i++) {
-        enemy = enemies.create(game.rnd.integerInRange(400,1800), game.rnd.integerInRange(400,3800),'enemies');
+        enemy = enemies.create(game.rnd.integerInRange(400,3800), game.rnd.integerInRange(400,1800),'enemies');
         enemy.animations.add('fire');
         enemy.animations.play('fire',10,true);
         enemy.body.setSize(60,60,10,-20);
@@ -153,7 +153,7 @@ function create(){
     asteroids.physicsBodyType = Phaser.Physics.ARCADE;
     
     for (var i = 0; i < 20; i++){
-        asteroid = asteroids.create(game.rnd.integerInRange(400, 1800), game.rnd.integerInRange(400, 3800), 'asteroid');
+        asteroid = asteroids.create(game.rnd.integerInRange(400, 3800), game.rnd.integerInRange(400, 1800), 'asteroid');
         asteroid.body.immovable = true;
         asteroid.body.setSize(40, 40, 10, 10);
     }
