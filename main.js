@@ -55,7 +55,7 @@ var xKey;
 var keys;
 
 var acc = 700;
-var drag = 300;
+var drag = 200;
 var maxVel = 300;
 
 var bulletTime = 0;
@@ -90,7 +90,7 @@ function create(){
     starfield = game.add.tileSprite(0, 0, 4000 , 2000, 'background');
 
     planets = game.add.group();
-    planets.enebleBody = true;
+    planets.enableBody = true;
     planets.physicsBodyType = Phaser.Physics.ARCADE;
 
     for (var i = 0; i<3; i++) {
