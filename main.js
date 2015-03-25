@@ -28,6 +28,7 @@ function preload(){
     game.stage.backgroundColor = '#2c3e50';
 
     game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+    game.time.advancedTiming = true;
 }
 
 var player;
@@ -371,6 +372,7 @@ function render(){
     //bullets.forEachAlive(renderGroup, this);
     //asteroids.forEachAlive(renderGroup, this);
     //enemies.forEachAlive(renderGroup,this);
+    game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
 }
 
 function renderGroup(member){
