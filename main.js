@@ -237,29 +237,23 @@ function update(){
 
         if (xKey.isDown && hpPlayer > 0){
             fire();
-            aI();
         }
 
         if (keys.up.isDown) {
             game.physics.arcade.accelerationFromRotation(player.rotation, 500, player.body.acceleration);
-            aI();
         }
         else {
             player.body.acceleration.set(0);
-            aI();
         }
 
         if (keys.left.isDown) {
             player.body.angularVelocity = -250;
-            aI();
         }
         else if (keys.right.isDown) {
             player.body.angularVelocity = 250;
-            aI();
         }
         else {
             player.body.angularVelocity = 0;
-            aI();
         }
     }
     
@@ -271,6 +265,8 @@ function update(){
 
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
+    
+    aI();
 }
 
 function aI(){
