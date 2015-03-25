@@ -369,8 +369,8 @@ function explode(sprite){
 function render(){
     //game.debug.body(player);
     //bullets.forEachAlive(renderGroup, this);
-    asteroids.forEachAlive(renderGroup, this);
-    enemies.forEachAlive(renderGroup,this);
+    //asteroids.forEachAlive(renderGroup, this);
+    //enemies.forEachAlive(renderGroup,this);
 }
 
 function renderGroup(member){
