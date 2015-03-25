@@ -237,28 +237,30 @@ function update(){
 
         if (xKey.isDown && hpPlayer > 0){
             fire();
+            aI();
         }
 
         if (keys.up.isDown) {
             game.physics.arcade.accelerationFromRotation(player.rotation, 500, player.body.acceleration);
+            aI();
         }
         else {
             player.body.acceleration.set(0);
+            aI();
         }
 
         if (keys.left.isDown) {
             player.body.angularVelocity = -250;
+            aI();
         }
         else if (keys.right.isDown) {
             player.body.angularVelocity = 250;
+            aI();
         }
         else {
             player.body.angularVelocity = 0;
+            aI();
         }
-    }
-    
-    if (game.physics.arcade.distanceBetween(player, enemy) < 200){
-        game.physics.arcade.moveToObject(enemy, player)
     }
     
     game.world.wrap(player, 0, true);
@@ -269,6 +271,12 @@ function update(){
 
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
+}
+
+function aI(){
+    if (game.physics.arcade.distanceBetween(player, enemy) < 200){
+        game.physics.arcade.moveToObject(enemy, player)
+    }
 }
 
 function setHp(){
