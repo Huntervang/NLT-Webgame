@@ -1,4 +1,4 @@
-var game = new Phaser.Game(4000 , 2000, Phaser.AUTO, 'game',{preload: preload, create: create, update: update, render: render});
+var game = new Phaser.Game(800 , 600, Phaser.AUTO, 'game',{preload: preload, create: create, update: update, render: render});
 
 WebFontConfig = {
     active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
