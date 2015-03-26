@@ -269,12 +269,12 @@ function update(){
     aI();
 }
 
-function aI(enemy){
+/*function aI(enemy){
     if (game.physics.arcade.distanceBetween(player, enemy) < 400){
         game.physics.arcade.moveToObject(enemy, player)
     }
 }
-
+*/
 function setHp(){
     if (typeof b_hp !== 'undefined'){
         b_hp.kill();
