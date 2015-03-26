@@ -269,9 +269,11 @@ function update(){
     aI(enemy);
 }
 
-function aI(enemy){
-    if (game.physics.arcade.distanceBetween(player, enemy) < 400){
-        game.physics.arcade.moveToObject(enemy, player)
+function aI(enemy) {
+    for(var i = 0; i < enemies.length; i++) {
+        if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400){
+            game.physics.arcade.moveToObject(enemies.children[i], player)
+        }
     }
 }
 
