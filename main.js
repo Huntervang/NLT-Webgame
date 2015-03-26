@@ -266,10 +266,10 @@ function update(){
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
     
-    aI();
+    aI(enemies);
 }
 
-function aI(enemiess){
+function aI(enemy){
     if (game.physics.arcade.distanceBetween(player, enemy) < 400){
         game.physics.arcade.moveToObject(enemy, player)
     }
