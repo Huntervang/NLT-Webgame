@@ -266,7 +266,7 @@ function update(){
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
     
-    aI();
+    //aI();
 }
 
 /*function aI(enemy){
