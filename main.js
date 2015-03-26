@@ -266,15 +266,15 @@ function update(){
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
     
-    //aI();
+    aI();
 }
 
-/*function aI(enemy){
+function aI(enemiess){
     if (game.physics.arcade.distanceBetween(player, enemy) < 400){
         game.physics.arcade.moveToObject(enemy, player)
     }
 }
-*/
+
 function setHp(){
     if (typeof b_hp !== 'undefined'){
         b_hp.kill();
