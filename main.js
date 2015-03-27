@@ -82,6 +82,9 @@ var gameOver;
 
 var menu = 0;
 
+var enemyBullet;
+var livingEnemies = [];
+
 function create(){
     game.world.setBounds(0,0,4000,2000);
 
@@ -132,6 +135,15 @@ function create(){
     bullets.setAll('anchor.y', 0.5);
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
+    
+    enemyBullets = game.add.group(); 
+    enemyBullets.enableBody = true;
+    enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
+    enemyBullets.createMultiple(30, 'bullet');
+    enemyBullets.setAll('anchor.x', 0.5);
+    enemyBullets.setAll('anchor.y', 0.5);
+    enemyBullets.setAll('outOfBoundsKill', true);
+    enemyBullets.setAll('checkWorldBounds', true);
 
     enemies = game.add.group();
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -267,6 +279,8 @@ function update(){
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
     
     aI(enemy);
+    
+    enemyFires ()
 }
 
 function aI(enemy) {
@@ -275,6 +289,41 @@ function aI(enemy) {
             game.physics.arcade.moveToObject(enemies.children[i], player)
         }
     }
+}
+
+function enemyFires () {
+
+    //  Grab the first bullet we can from the pool
+    enemyBullet = enemyBullets.getFirstExists(false);
+
+    livingEnemies.length=0;
+
+    enemies.forEachAlive(function(enemies){
+
+        // put every living enemy in an array
+        livingEnemies.push(enemies);
+    });
+
+
+    if (enemyBullet && livingEnemies.length > 0)
+    {
+        
+        for(var i = 0; i < enemies.length; i++) {
+        if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400){
+    
+
+        // randomly select one of them
+        var shooter=livingEnemies[i];
+        // And fire the bullet from this enemy
+        enemyBullet.reset(shooter.body.x, shooter.body.y);
+
+        game.physics.arcade.moveToObject(enemyBullet,player,120);
+        firingTimer = game.time.now + 2000;
+    
+        }
+        }
+        }
+
 }
 
 function setHp(){
