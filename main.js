@@ -84,6 +84,7 @@ var menu = 0;
 
 var enemyBullet;
 var livingEnemies = [];
+var firingTimerEnemy;
 
 function create(){
     game.world.setBounds(0,0,4000,2000);
@@ -210,7 +211,7 @@ function removeOpenScreen (){
     game.input.onDown.add(removeOpenScreen, this);
     openScreen.kill();
     window.setTimeout(function(){menu = 1;}, 100);
-    menu = 1;
+
 }
 
 function update(){
@@ -312,7 +313,7 @@ function enemyFires () {
     {
         
         for(var i = 0; i < enemies.length; i++) {
-        if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400){
+        if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
     
 
         // randomly select one of them
@@ -321,7 +322,7 @@ function enemyFires () {
         enemyBullet.reset(shooter.body.x, shooter.body.y);
 
         game.physics.arcade.moveToObject(enemyBullet,player,120);
-        firingTimer = game.time.now + 2000;
+        firingTimerEnemy = game.time.now + 500;
     
         }
         }
