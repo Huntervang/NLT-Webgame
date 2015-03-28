@@ -297,14 +297,14 @@ function aI(enemy) {
 
 function enemyFires () {
 
-    //  Grab the first bullet we can from the pool
+
     enemyBullet = enemyBullets.getFirstExists(false);
 
     livingEnemies.length=0;
 
     enemies.forEachAlive(function(enemies){
 
-        // put every living enemy in an array
+
         livingEnemies.push(enemies);
     });
 
@@ -321,7 +321,7 @@ function enemyFires () {
 
         enemyBullet.reset(shooter.body.x, shooter.body.y);
 
-        game.physics.arcade.moveToObject(enemyBullet,player,120);
+        game.physics.arcade.moveToObject(enemyBullet,player,400);
         firingTimerEnemy = game.time.now + 500;
     
         }
