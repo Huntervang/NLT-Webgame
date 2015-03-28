@@ -278,6 +278,7 @@ function update(){
     game.physics.arcade.collide(enemies, asteroids, enemyAsteroid);
 
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
+    game.physics.arcade.overlap(enemyBullets, player, bulletPlayer);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
     
     if (menu === 1){
@@ -390,6 +391,13 @@ function bulletEnemy(bullet, enemy){
     killEnemy(enemy);
 
     window.setTimeout(function(){bullet.kill();}, 10);
+}
+
+function bulletPlayer(enemyBullet, player){
+    player.damage(damagePlayer);
+    killPlayer(player);
+
+    window.setTimeout(function(){enemyBullet.kill();}, 10);
 }
 
 function bulletAsteroid(bullet, asteroid){
