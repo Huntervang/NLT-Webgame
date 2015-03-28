@@ -278,7 +278,7 @@ function update(){
     game.physics.arcade.collide(enemies, asteroids, enemyAsteroid);
 
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
-    game.physics.arcade.overlap(enemyBullets, player, bulletPlayer);
+    game.physics.arcade.overlap(enemyBullet, player, bulletPlayer);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
     
     if (menu === 1){
@@ -394,7 +394,7 @@ function bulletEnemy(bullet, enemy){
 }
 
 function bulletPlayer(enemyBullet, player){
-    player.damage(damagePlayer);
+    player.damage(damageEnemy);
     killPlayer(player);
 
     window.setTimeout(function(){enemyBullet.kill();}, 10);
@@ -414,7 +414,9 @@ function killPlayer(a){
 
         gameOver = game.add.sprite(0, 0, 'gameOver');
         gameOver.fixedToCamera = true;
-
+        
+        menu = 0
+        
         explode(player);
     }
 
