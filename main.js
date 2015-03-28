@@ -310,24 +310,22 @@ function enemyFires () {
     });
 
 
-    if (enemyBullet && livingEnemies.length > 0)
-    {
+    if (enemyBullet && livingEnemies.length > 0){
+    
         
         for(var i = 0; i < enemies.length; i++) {
-        if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
+            if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
+        
+                var shooter=livingEnemies[i];
     
-
-
-        var shooter=livingEnemies[i];
-
-        enemyBullet.reset(shooter.body.x, shooter.body.y);
-
-        game.physics.arcade.moveToObject(enemyBullet,player,400);
-        firingTimerEnemy = game.time.now + 500;
+                enemyBullet.reset(shooter.body.x, shooter.body.y);
+    
+                game.physics.arcade.moveToObject(enemyBullet,player,400);
+                firingTimerEnemy = game.time.now + 500;
+            }
         }
-        }
-        }
-        }
+    }
+}
 
 }
 
