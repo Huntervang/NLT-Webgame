@@ -313,16 +313,16 @@ function enemyFires () {
     {
         
         for(var i = 0; i < enemies.length; i++) {
-        if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
+        if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 /*&& firingTimerEnemy < game.time.now */){
     
 
-        // randomly select one of them
+
         var shooter=livingEnemies[i];
-        // And fire the bullet from this enemy
+
         enemyBullet.reset(shooter.body.x, shooter.body.y);
 
         game.physics.arcade.moveToObject(enemyBullet,player,120);
-        firingTimerEnemy = game.time.now + 500;
+        //firingTimerEnemy = game.time.now + 500;
     
         }
         }
