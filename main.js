@@ -210,6 +210,7 @@ function removeOpenScreen (){
     game.input.onDown.add(removeOpenScreen, this);
     openScreen.kill();
     window.setTimeout(function(){menu = 1;}, 100);
+    menu = 1;
 }
 
 function update(){
@@ -278,9 +279,11 @@ function update(){
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
     
-    aI(enemy);
+    if (menu === 1){
+        aI(enemy);
     
-    enemyFires ()
+        enemyFires ()
+    }
 }
 
 function aI(enemy) {
