@@ -307,8 +307,6 @@ function enemyFires () {
 
 
         livingEnemies.push(enemies);
-    });
-
 
     if (enemyBullet && livingEnemies.length > 0){
     
