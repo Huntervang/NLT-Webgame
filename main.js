@@ -278,7 +278,7 @@ function update(){
     game.physics.arcade.collide(enemies, asteroids, enemyAsteroid);
 
     game.physics.arcade.overlap(bullets, enemies, bulletEnemy);
-    game.physics.arcade.overlap(enemyBullet, player, bulletPlayer);
+    game.physics.arcade.overlap(enemyBullets, player, bulletPlayer);
     game.physics.arcade.overlap(bullets, asteroids, bulletAsteroid);
     
     if (menu === 1){
@@ -292,6 +292,7 @@ function aI(enemy) {
     for(var i = 0; i < enemies.length; i++) {
         if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400){
             game.physics.arcade.moveToObject(enemies.children[i], player)
+            enemies.children[i].rotation = game.physics.arcade.angleToXY(enemies.children[i], player.x, player.y) + 3.8;
         }
     }
 }
@@ -318,10 +319,12 @@ function enemyFires () {
             if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
         
                 var shooter=livingEnemies[i];
-    
-                enemyBullet.reset(shooter.body.x, shooter.body.y);
-    
+
+                if (typeof shooter != 'undefined'){
+                    enemyBullet.reset(shooter.body.x, shooter.body.y);
+                }
                 game.physics.arcade.moveToObject(enemyBullet,player,400);
+                enemyBullet.rotation = game.physics.arcade.angleToXY(enemyBullet, player.x, player.y);
                 firingTimerEnemy = game.time.now + 500;
             }
         }
@@ -392,9 +395,8 @@ function bulletEnemy(bullet, enemy){
     window.setTimeout(function(){bullet.kill();}, 10);
 }
 
-function bulletPlayer(enemyBullet, player){
-    player.damage(damageEnemy);
-    killPlayer(player);
+function bulletPlayer(player, enemyBullet){
+    killPlayer(damageEnemy);
 
     window.setTimeout(function(){enemyBullet.kill();}, 10);
 }
