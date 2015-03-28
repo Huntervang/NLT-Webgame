@@ -308,6 +308,9 @@ function enemyFires () {
 
         livingEnemies.push(enemies);
 
+});
+
+
     if (enemyBullet && livingEnemies.length > 0){
     
         
@@ -325,7 +328,7 @@ function enemyFires () {
     }
 }
 
-}
+
 
 function setHp(){
     if (typeof b_hp !== 'undefined'){
