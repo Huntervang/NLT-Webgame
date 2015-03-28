@@ -324,7 +324,7 @@ function enemyFires () {
 
         game.physics.arcade.moveToObject(enemyBullet,player,400);
         firingTimerEnemy = game.time.now + 500;
-    
+        }
         }
         }
         }
