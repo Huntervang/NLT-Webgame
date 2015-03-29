@@ -294,7 +294,7 @@ function aI(enemy) {
     for(var i = 0; i < enemies.length; i++) {
         if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400){
             game.physics.arcade.moveToObject(enemies.children[i], player)
-            enemies.children[i].rotation = game.physics.arcade.angleToXY(enemies.children[i], player.x, player.y) + 190.8;
+            enemies.children[i].rotation = game.physics.arcade.angleToXY(enemies.children[i], player.x, player.y) + 200.8;
         }
     }
 }
@@ -451,7 +451,7 @@ function render(){
     //game.debug.body(player);
     //bullets.forEachAlive(renderGroup, this);
     //asteroids.forEachAlive(renderGroup, this);
-    //enemies.forEachAlive(renderGroup,this);
+    enemies.forEachAlive(renderGroup,this);
     game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
 }
 
