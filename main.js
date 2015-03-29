@@ -86,6 +86,8 @@ var enemyBullet;
 var livingEnemies = [];
 var firingTimerEnemy = 0;
 
+var numberOfEnemies = 10;
+
 function create(){
     game.world.setBounds(0,0,4000,2000);
 
@@ -150,7 +152,7 @@ function create(){
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
     enemies.enableBody = true;
 
-    for (var i = 0; i<10; i++) {
+    for (var i = 0; i<numberOfEnemies; i++) {
         enemy = enemies.create(game.rnd.integerInRange(400,3800), game.rnd.integerInRange(400,1800),'enemies');
         enemy.animations.add('fire');
         enemy.animations.play('fire',10,true);
@@ -326,6 +328,10 @@ function enemyFires () {
                 game.physics.arcade.moveToObject(enemyBullet,player,400);
                 enemyBullet.rotation = game.physics.arcade.angleToXY(enemyBullet, player.x, player.y);
                 firingTimerEnemy = game.time.now + 500;
+                
+                if (i = enemies.length){
+                    i = 0
+                }
             }
         }
     }
