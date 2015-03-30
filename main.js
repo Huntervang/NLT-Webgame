@@ -294,7 +294,7 @@ function aI(enemy) {
     for(var i = 0; i < enemies.length; i++) {
         if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400){
             game.physics.arcade.moveToObject(enemies.children[i], player)
-            enemies.children[i].rotation = game.physics.arcade.angleToXY(enemies.children[i], player.x, player.y) + .5 * Pi;
+            enemies.children[i].rotation = game.physics.arcade.angleToXY(enemies.children[i], player.x, player.y) + 1.57079632679;
         }
     }
 }
