@@ -55,7 +55,7 @@ var xKey;
 var keys;
 
 var acc = 700;
-var drag = 200;
+var drag = 100;
 var maxVel = 300;
 
 var bulletTime = 0;
