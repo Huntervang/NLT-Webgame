@@ -294,7 +294,7 @@ function aI(enemy) {
     for(var i = 0; i < enemies.length; i++) {
         if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400){
             game.physics.arcade.moveToObject(enemies.children[i], player)
-            enemies.children[i].rotation = game.physics.arcade.angleToXY(enemies.children[i], player.x, player.y) + 90;
+            enemies.children[i].rotation = game.physics.arcade.angleToXY(enemies.children[i], player.x, player.y) + 80;
         }
     }
 }
@@ -323,7 +323,7 @@ function enemyFires () {
                 var shooter=livingEnemies[i];
 
                 if (typeof shooter != 'undefined'){
-                    enemyBullet.reset(shooter.body.x, shooter.body.y);
+                    enemyBullet.reset(shooter.body.x + 300, shooter.body.y + 300);
                 }
                 game.physics.arcade.moveToObject(enemyBullet,player,400);
                 enemyBullet.rotation = game.physics.arcade.angleToXY(enemyBullet, player.x, player.y);
