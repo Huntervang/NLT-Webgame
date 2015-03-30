@@ -320,9 +320,9 @@ function enemyFires () {
         for(var i = 0; i < enemies.length; i++) {
             if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
         
-                var shooter=livingEnemies[i];
+                var shooter + i =livingEnemies[i];
 
-                if (typeof shooter != 'undefined'){
+                if (typeof shooter + i != 'undefined'){
                     enemyBullet.reset(shooter.body.x + 30, shooter.body.y + 30);
                 }
                 game.physics.arcade.moveToObject(enemyBullet,player,400);
