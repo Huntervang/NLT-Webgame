@@ -156,7 +156,7 @@ function create(){
         enemy = enemies.create(game.rnd.integerInRange(400,3800), game.rnd.integerInRange(400,1800),'enemies');
         enemy.animations.add('fire');
         enemy.animations.play('fire',10,true);
-        enemy.body.setSize(60,60,10,-20);
+        enemy.body.setSize(60,60,0,0);
         enemy.body.collideWorldBounds = true;
         enemy.body.bounce.setTo(0.01,0.01);
         enemy.anchor.setTo(0.5, 0.5);
