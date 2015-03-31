@@ -7,17 +7,29 @@ Door Koen van Remundt, Jonas Stappers en Hunter van Geffen
 #####Concept beta
 
 ##Pseudocode:
+
+object Speler:
 Input | Output
 --- | ---
-toets “a” | links versnellen
-toets “d” | rechts versnellen
-toets “w” | boven versnellen
-toets “s” | beneden versnellen
-mouseclick 1 | schiet primairy weapon
-mouseclick 2 | schiet secundaire weapon
-collide hoek van inval | collide hoek van uitval
-kogel raak | schade aan ontvanger
-muis bewegen | visier volgt mee
+toets “<--” | draai met een bepaalde hoeksnelheid naar links
+toets “-->” | draai met een bepaalde hoeksnelheid naar rechts
+toets “^” | bepaal in welke richting de player gedraait is en versnel in die richting
+toets "x" | bepaal in welke richting de player gedraait is en vuur een bullet in die richting
+collide hoek van inval | collide hoek van uitval en doe schade aan player (en enemy)
+kogel raak | schade aan ontvanger of als het een astreroid is, kill bullet
+
+object Enemy:
+Input | Output
+--- | ---
+player komt dicht bij enemy | enemy draait naar player toe en versnelt in die richting
+player komt dicht bij enemy | enemy schiet bullets in de richting van player
+player beweegt weg van enemy | enemy blijft in zijn richting zweven totdat hij weer player tegenkomt
+
+object shield:
+Input | Output
+--- | ---
+player wordt geraakt | een balkje verdwijnt
+een bepaalde tijd gaat voorbij | een balkje komt erbij
 
 ##Planning:
 
