@@ -38,6 +38,7 @@ een bepaalde tijd gaat voorbij | een balkje komt erbij
 
 ###Koen
 - veel Javascript programmeren
+- pseudocode/object beschrijvingen
 
 ###Hunter
 - veel Javascript programmeren 
