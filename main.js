@@ -338,6 +338,7 @@ function enemyFires () {
     if (enemyBullet && livingEnemies.length > 0){
         
         for(var i = 0; i < enemies.length; i++) {
+            enemyBullet = enemyBullets.getFirstDead();
             
             if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
         
