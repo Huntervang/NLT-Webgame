@@ -22,7 +22,7 @@ function preload(){
     game.load.image('cursor',          'assets/pixel/crosshair.png');
     game.load.image('bullet',          'assets/pixel/bullet.png');
     game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
-    game.load.image('openScreen',      'assets/pixel/start_screen.png', 800, 500);
+    game.load.image('openScreen',      'assets/flat/startscreen.png', 800, 500);
     game.load.image('asteroid',        'assets/flat/asteriode64.png', 64, 64);
     game.load.image('gameOver',        'assets/flat/game_over.png', 800, 600);
     game.load.image('background',      'assets/flat/background.png');
