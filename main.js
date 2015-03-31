@@ -19,7 +19,6 @@ function preload(){
     // load the images and spritesheets 
     game.load.spritesheet('enemies',   'assets/flat/enemyspritesheet64.png', 64, 64);
     game.load.spritesheet('player',    'assets/flat/spaceshipspritesheet.png', 128, 128);
-    game.load.image('cursor',          'assets/pixel/crosshair.png');
     game.load.image('bullet',          'assets/pixel/bullet.png');
     game.load.spritesheet('explosion', 'assets/pixel/explosion.png', 32, 32);
     game.load.image('openScreen',      'assets/flat/startscreen.png', 800, 500);
@@ -31,6 +30,7 @@ function preload(){
     game.load.image('b_hp',            'assets/pixel/b_health.png', 40, 40);
     game.load.image('m_hp',            'assets/pixel/m_health.png', 40, 40);
     game.load.image('e_hp',            'assets/pixel/e_health.png', 40, 40);
+    game.load.audio('music',           'assets/music.mp3');
 
     // set the background color
     game.stage.backgroundColor = '#2c3e50';
@@ -92,6 +92,8 @@ var gameOver;
 
 var menu = 0;
 
+var music;
+
 var enemyBullet;
 var livingEnemies = [];
 var firingTimerEnemy = 0;
@@ -109,6 +111,8 @@ function create(){
 
     // create the background
     starfield = game.add.tileSprite(0, 0, 4000 , 2000, 'background');
+
+    music = game.sound.play('music');
 
     // create the planet group and set their properties
     planets = game.add.group();
@@ -473,7 +477,7 @@ function render(){
     //bullets.forEachAlive(renderGroup, this);
     //asteroids.forEachAlive(renderGroup, this);
     //enemies.forEachAlive(renderGroup,this);
-    game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+    //game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
 }
 
 function renderGroup(member){
