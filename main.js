@@ -341,8 +341,11 @@ function enemyFires () {
             if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
         
                 var shooter = livingEnemies[i];
-
-                enemyBullet.reset(shooter.body.x + 30, shooter.body.y + 30);
+                
+                if (typeof shooter != 'undefined'){
+                    enemyBullet.reset(shooter.body.x + 30, shooter.body.y + 30);
+                }
+                
                 game.physics.arcade.moveToObject(enemyBullet,player,400);
                 enemyBullet.rotation = game.physics.arcade.angleToXY(enemyBullet, player.x, player.y);
                 firingTimerEnemy = game.time.now + 500;
