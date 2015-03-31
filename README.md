@@ -34,6 +34,22 @@ Input | Output
 player wordt geraakt | een balkje verdwijnt
 een bepaalde tijd gaat voorbij | een balkje komt erbij
 
+##Taakverdeling
+
+###Koen
+- veel Javascript programmeren
+
+###Hunter
+- veel Javascript programmeren 
+- problem solver
+- onduidelijkheden uitzoeken
+
+###Jonas
+- html/css programmeren 
+- beetje Javascript programmeren 
+- artwork / user interface
+
+
 ##Planning:
 
 ####Week1:
