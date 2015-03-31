@@ -30,28 +30,32 @@
         <div id="container">
             <div id="game"></div>
         </div>
-
         <div id="credits">
-            <h1>
-                CREDITS
-            </h1>
-            <p>
-                Koen van Remundt
-            </p>
-            <p>
-                Jonas Stappers
-            </p>
-            <p>
-                Hunter van Geffen
-            </p>
-            
+            <div id="credits-img">
+                <img src="assets/flat/credits.png" width="300px">
+            </div>
+            <div id="credits-box">
+                <p>
+                    Koen van Remundt
+                </p>
+                <p>
+                    Jonas Stappers
+                </p>
+                <p>
+                    Hunter van Geffen
+                </p>
+            </div>
         </div>
-
+        
         <div id="howmade">
-            <h1>HOW MADE</h1>
-            <p><a href="https://github.com/Smauwie/NLT-spel">Source code</a></p>
-            <p><a href="https://github.com/Smauwie/NLT-spel/blob/gh-pages/README.md">Readme</a></p>
-        </div>
+            <div id="howmade-img">
+                <img src="assets/flat/howmade.png" width="300px" height="46px">
+            </div>
+            <div id="howmade-box">
+                <p><a href="https://github.com/Smauwie/NLT-spel">Source code</a></p>
+                <p><a href="https://github.com/Smauwie/NLT-spel/blob/gh-pages/README.md">Readme</a></p>
+            </div>
+        </div>    
     </div>
     <style>
        
@@ -65,12 +69,12 @@
             margin:auto;
         }
         #game {
-               cursor: none;
+            cursor: none;
             height:600px;
-                width:800px;
-                padding-top:25px;
-                padding-bottom:25px;
-                margin:auto;
+            width:800px;
+            padding-top:25px;
+            padding-bottom:25px;
+            margin:auto;
         }
         #container {
             height:650px;
@@ -90,65 +94,71 @@
         }
         
         #credits {
-            width:330px;
-            height:350px;
+            width:300px;
+            height:600px;
             float:left;
-            background-color:#2c3e50;
-            margin-top: 100px;
-            border-radius:5px;
-            margin-bottom:20px;
+            margin-top:80px;
         }
-                #credits h1 {
-                    font-family:Lato;
-                    font-size:53px;
-                    font-weight:lighter;
-                    color:white;
-                    margin:auto;
-                    text-align:center;
-                    padding-top:20px;
+                #credits-img {
+                    margin-bottom:20px;
                 }
-                
-                #credits p {
-                    font-family:Lato;
-                    font-size:24px;
-                    font-weight:300;
-                    color:white;
-                    text-align:center;
+        
+        
+                #credits-box {
+                    width:300px;
+                    height:200px;
+                    float:left;
+                    background-color:#2c3e50;
+                    border-radius:3px;
+                    margin-bottom:20px;   
                 }
+
+                        #credits-box p {
+                            font-family:Lato;
+                            font-size:24px;
+                            font-weight:300;
+                            color:white;
+                            text-align:center;
+                        }
                 
         #howmade {
-            background-color:#223e50;
-            width:330px;
-            height:350px;
-            margin-top:100px;
+            width:300px;
+            height:600px;
             float:right;
-            border-radius:5px;
-            margin-bottom:20px;
+            margin-top:80px;
         }
-                #howmade h1 {
-                    font-family:Lato;
-                    font-size:53px;
-                    font-weight:lighter;
-                    color:white;
-                    margin:auto;
-                    text-align:center;
-                    padding-top:20px;
+        
+                #howmade-img{
+                    margin-bottom:20px;
                 }
                 
-                #howmade p {
-                    text-align:center;
+                #howmade-box{
+                    width:300px;
+                    height:200px;
+                    float:right;
+                    background-color:#2c3e50;
+                    border-radius:3px;
+                    margin-bottom:20px;  
                 }
-                
-                #howmade a {
-                    font-family:Lato;
-                    font-size:24px;
-                    font-weight:300;
-                    color:white;
-                    text-decoration:none;
-                }
-                #howmade a:hover{
-                    color:gray;
-                }
+        
+
+                        #howmade-box p {
+                            text-align:center;
+                            padding-top: 15px;
+                        }
+
+                        #howmade-box a {
+                            font-family:Lato;
+                            font-size:35px;
+                            font-weight:300;
+                            color:white;
+                            text-decoration:none;
+                            transition: color 0.5s;
+                        }
+
+                        #howmade-box a:hover{
+                            color:#129272;
+                        }
         
         
     </style>
