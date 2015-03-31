@@ -8,7 +8,7 @@ Door Koen van Remundt, Jonas Stappers en Hunter van Geffen
 
 ##Pseudocode:
 
-object Speler:
+####Object Speler:
 
 Input | Output
 --- | ---
@@ -19,7 +19,7 @@ toets "x" | bepaal in welke richting de player gedraait is en vuur een bullet in
 collide hoek van inval | collide hoek van uitval en doe schade aan player (en enemy)
 kogel raak | schade aan ontvanger of als het een astreroid is, kill bullet
 
-object Enemy:
+####Object Enemy:
 
 Input | Output
 --- | ---
@@ -27,7 +27,7 @@ player komt dicht bij enemy | enemy draait naar player toe en versnelt in die ri
 player komt dicht bij enemy | enemy schiet bullets in de richting van player
 player beweegt weg van enemy | enemy blijft in zijn richting zweven totdat hij weer player tegenkomt
 
-object shield:
+####Object shield:
 
 Input | Output
 --- | ---
