@@ -1,15 +1,22 @@
+// create the game variable
 var game = new Phaser.Game(800 , 600, Phaser.AUTO, 'game',{preload: preload, create: create, update: update, render: render});
 
+// load the webfont
 WebFontConfig = {
-    active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
-
+    active: function() { 
+        game.time.events.add(Phaser.Timer.SECOND, createText, this); 
+    },
+    
     google: {
       families: ['Lato']
     }
 
 };
 
+// Preload loads everything before the game starts
 function preload(){
+    
+    // load the images and spritesheets 
     game.load.spritesheet('enemies',   'assets/flat/enemyspritesheet64.png', 64, 64);
     game.load.spritesheet('player',    'assets/flat/spaceshipspritesheet.png', 128, 128);
     game.load.image('cursor',          'assets/pixel/crosshair.png');
@@ -25,12 +32,17 @@ function preload(){
     game.load.image('m_hp',            'assets/pixel/m_health.png', 40, 40);
     game.load.image('e_hp',            'assets/pixel/e_health.png', 40, 40);
 
+    // set the background color
     game.stage.backgroundColor = '#2c3e50';
 
+    // load the script used for the webfont
     game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+    
+    // set the time to advanced to be able to show the FPS
     game.time.advancedTiming = true;
 }
 
+// set the global variables
 var player;
 
 var enemies;
@@ -71,8 +83,6 @@ var score = 0;
 
 var scoreString = '';
 var scoreText;
-//var healthString = '';
-//var healthText;
 
 var hp;
 var maxHp = 5;
@@ -88,17 +98,24 @@ var firingTimerEnemy = 0;
 
 var numberOfEnemies = 10;
 
+// create runs all its code once after the game has loaded
 function create(){
+    
+    // set the size of the world
     game.world.setBounds(0,0,4000,2000);
 
+    // start the physics engine
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
+    // create the background
     starfield = game.add.tileSprite(0, 0, 4000 , 2000, 'background');
 
+    // create the planet group and set their properties
     planets = game.add.group();
     planets.enableBody = true;
     planets.physicsBodyType = Phaser.Physics.ARCADE;
 
+    // spawn the planets in the world
     for (var i = 0; i<3; i++) {
         if (i = 1){
             planet = planets.create(game.rnd.integerInRange(200,1800), game.rnd.integerInRange(200,800),'planet');
@@ -118,6 +135,7 @@ function create(){
         }
     }
 
+    // create the player and set its properties
     player = game.add.sprite(400, 500, 'player');
     player.animations.add('fire_p');
     player.animations.play('fire_p', 10, true);
@@ -128,8 +146,10 @@ function create(){
     player.body.bounce.setTo(1, 1);
     player.scale.setTo(0.5, 0.5);
 
+    // make the camera follow the player
     game.camera.follow(player);
 
+    // create the bullet group and set their properties
     bullets = game.add.group(); 
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -139,19 +159,22 @@ function create(){
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
     
+    // create the enemy's bullet group and set their properties
     enemyBullets = game.add.group(); 
     enemyBullets.enableBody = true;
     enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
-    enemyBullets.createMultiple(30, 'bullet');
+    enemyBullets.createMultiple(100, 'bullet');
     enemyBullets.setAll('anchor.x', 0.5);
     enemyBullets.setAll('anchor.y', 0.5);
     enemyBullets.setAll('outOfBoundsKill', true);
     enemyBullets.setAll('checkWorldBounds', true);
 
+    // create the enemies group and set their properties
     enemies = game.add.group();
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
     enemies.enableBody = true;
 
+    // spawn the enemies in the world
     for (var i = 0; i<numberOfEnemies; i++) {
         enemy = enemies.create(game.rnd.integerInRange(600,3800), game.rnd.integerInRange(600,1800),'enemies');
         enemy.animations.add('fire');
@@ -163,10 +186,12 @@ function create(){
         enemy.health = hpEnemy;
     }
 
+    // create the asteroids group and set their properties
     asteroids = game.add.group();
     asteroids.enableBody = true;
     asteroids.physicsBodyType = Phaser.Physics.ARCADE;
     
+    // spawn the asteroids in the world
     for (var i = 0; i < 20; i++){
         asteroid = asteroids.create(game.rnd.integerInRange(400, 3800), game.rnd.integerInRange(400, 1800), 'asteroid');
         asteroid.body.immovable = true;
@@ -300,27 +325,23 @@ function aI(enemy) {
 }
 
 function enemyFires () {
-
-
-    enemyBullet = enemyBullets.getFirstExists(false);
-
+    enemyBullet = enemyBullets.getFirstDead();
+    
     livingEnemies.length=0;
-
-    enemies.forEachAlive(function(enemies){
-
-
-        livingEnemies.push(enemies);
-
-});
-
+    
+    enemies.forEachAlive(
+        function(enemies){
+            livingEnemies.push(enemies);
+        }
+    );
 
     if (enemyBullet && livingEnemies.length > 0){
-    
         
         for(var i = 0; i < enemies.length; i++) {
+            
             if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
         
-                var shooter =livingEnemies[i];
+                var shooter = livingEnemies[i];
 
                 if (typeof shooter != 'undefined'){
                     enemyBullet.reset(shooter.body.x + 30, shooter.body.y + 30);
@@ -330,7 +351,7 @@ function enemyFires () {
                 firingTimerEnemy = game.time.now + 500;
                 
                 if (i = enemies.length){
-                    i = 0
+                    i = 0;
                 }
             }
         }
