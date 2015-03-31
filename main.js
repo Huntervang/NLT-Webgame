@@ -327,7 +327,7 @@ function aI(enemy) {
 function enemyFires () {
     enemyBullet = enemyBullets.getFirstDead();
     
-    livingEnemies.length=0;
+    livingEnemies.length = 0;
     
     enemies.forEachAlive(
         function(enemies){
@@ -338,15 +338,11 @@ function enemyFires () {
     if (enemyBullet && livingEnemies.length > 0){
         
         for(var i = 0; i < enemies.length; i++) {
-            enemyBullet = enemyBullets.getFirstDead();
-            
             if (game.physics.arcade.distanceBetween(player, enemies.children[i]) < 400 && firingTimerEnemy < game.time.now ){
         
                 var shooter = livingEnemies[i];
 
-                if (typeof shooter != 'undefined'){
-                    enemyBullet.reset(shooter.body.x + 30, shooter.body.y + 30);
-                }
+                enemyBullet.reset(shooter.body.x + 30, shooter.body.y + 30);
                 game.physics.arcade.moveToObject(enemyBullet,player,400);
                 enemyBullet.rotation = game.physics.arcade.angleToXY(enemyBullet, player.x, player.y);
                 firingTimerEnemy = game.time.now + 500;
