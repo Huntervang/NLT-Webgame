@@ -27,13 +27,6 @@ player komt dicht bij enemy | enemy draait naar player toe en versnelt in die ri
 player komt dicht bij enemy | enemy schiet bullets in de richting van player
 player beweegt weg van enemy | enemy blijft in zijn richting zweven totdat hij weer player tegenkomt
 
-####Object shield:
-
-Input | Output
---- | ---
-player wordt geraakt | een balkje verdwijnt
-een bepaalde tijd gaat voorbij | een balkje komt erbij
-
 ##Taakverdeling
 
 ###Koen
