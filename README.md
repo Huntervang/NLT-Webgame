@@ -1,4 +1,4 @@
-[![alt text](http://i.imgur.com/Y6x2Sks.png "NGC-7331")](http://smauwie.github.io/NLT-spel)
+[![alt text](http://i.imgur.com/Y6x2Sks.png "NGC-7331")](http://huntervang.github.io/NLT-Webgame/)
 Door Koen van Remundt, Jonas Stappers en Hunter van Geffen
 
 ![alt text](http://i.imgur.com/qOjqXot.png "Alpha")
