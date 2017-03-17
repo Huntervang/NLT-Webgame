@@ -2,13 +2,13 @@
 Door Koen van Remundt, Jonas Stappers en Hunter van Geffen
 
 ![alt text](http://i.imgur.com/qOjqXot.png "Alpha")
-#####Concept alpha
+##### Concept alpha
 ![alt text](http://i.imgur.com/4dqY0pG.png "Beta")
-#####Concept beta
+##### Concept beta
 
-##Pseudocode:
+## Pseudocode:
 
-####Object Speler:
+#### Object Speler:
 
 Input | Output
 --- | ---
@@ -19,7 +19,7 @@ toets "x" | bepaal in welke richting de player gedraait is en vuur een bullet in
 collide hoek van inval | collide hoek van uitval en doe schade aan player (en enemy)
 kogel raak | schade aan ontvanger of als het een astreroid is, kill bullet
 
-####Object Enemy:
+#### Object Enemy:
 
 Input | Output
 --- | ---
@@ -27,31 +27,31 @@ player komt dicht bij enemy | enemy draait naar player toe en versnelt in die ri
 player komt dicht bij enemy | enemy schiet bullets in de richting van player
 player beweegt weg van enemy | enemy blijft in zijn richting zweven totdat hij weer player tegenkomt
 
-##Taakverdeling
+## Taakverdeling
 
-###Koen
+### Koen
 - veel Javascript programmeren
 - pseudocode/object beschrijvingen
 
-###Hunter
+### Hunter
 - veel Javascript programmeren 
 - problem solver
 - onduidelijkheden uitzoeken
 
-###Jonas
+### Jonas
 - html/css programmeren 
 - beetje Javascript programmeren 
 - artwork / user interface
 
 
-##Planning:
+## Planning:
 
-####Week1:
+#### Week1:
 Planning af!
 Pseudocode af!
 
-####Week2:
-#####alpha:
+#### Week2:
+##### alpha:
 - ruwe versie spel
 - makkelijke map 
 - placeholder art
@@ -59,8 +59,8 @@ Pseudocode af!
 - enemy’s kunnen schaden krijgen, bewegen en schieten
 
 	
-####Week3:
-#####beta:
+#### Week3:
+##### beta:
 - achtergrond
 - makkelijke artwork
 - het idee van de map
@@ -69,8 +69,8 @@ Pseudocode af!
 - schild
 - credits aan het eind
 
-####Week4:
+#### Week4:
 Spel af!
 
-####Week 5:
+#### Week 5:
 extra updates
